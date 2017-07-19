@@ -50,6 +50,10 @@ gem 'github_api'
 
 gem 'activeadmin', '~> 1.0'
 
+gem 'paranoia', '~> 2.2'
+
+gem 'cancancan', '~> 2.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -58,6 +62,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.8'
   gem 'faker', '~> 1.8', '>= 1.8.4'
   gem 'simplecov'
+  gem 'database_cleaner'
 end
 
 group :development do

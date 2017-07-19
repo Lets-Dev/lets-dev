@@ -1,6 +1,14 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/sofianegargouri/Development/LetsDev/app/models/team_challenge_membership.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/team.rb": [
         1,
         1,
@@ -26,16 +34,81 @@
         1,
         null,
         1,
+        24,
+        null,
+        null,
+        1,
+        20,
+        null,
+        null,
+        1,
         1,
         0,
         null,
         null
       ],
-      "/Users/sofianegargouri/Development/LetsDev/app/models/team_user_membership.rb": [
+      "/Users/sofianegargouri/Development/LetsDev/app/models/team_user_membership_invitation.rb": [
         1,
         1,
         1,
         null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/sofianegargouri/Development/LetsDev/app/models/ability.rb": [
+        1,
+        1,
+        null,
+        1,
+        32,
+        32,
+        0,
+        null,
+        null,
+        32,
+        3,
+        null,
+        null,
+        32,
+        1,
+        null,
+        null,
+        32,
+        3,
+        null,
+        null,
+        32,
+        21,
+        null,
+        null,
+        32,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/sofianegargouri/Development/LetsDev/app/mailers/team_invitation_mailer.rb": [
+        1,
+        1,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/Users/sofianegargouri/Development/LetsDev/app/mailers/application_mailer.rb": [
+        1,
+        1,
         1,
         null
       ],
@@ -565,20 +638,6 @@
         0,
         0
       ],
-      "/Users/sofianegargouri/Development/LetsDev/app/mailers/application_mailer.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/sofianegargouri/Development/LetsDev/app/mailers/team_invitation_mailer.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/application_record.rb": [
         0,
         0,
@@ -681,13 +740,12 @@
         0,
         0
       ],
-      "/Users/sofianegargouri/Development/LetsDev/app/models/team_challenge_membership.rb": [
+      "/Users/sofianegargouri/Development/LetsDev/app/models/team_user_membership.rb": [
         0,
         0,
         0,
-        0
-      ],
-      "/Users/sofianegargouri/Development/LetsDev/app/models/team_user_membership_invitation.rb": [
+        0,
+        0,
         0,
         0,
         0,
@@ -783,9 +841,17 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
-    "timestamp": 1500325258
+    "timestamp": 1500489122
   }
 }

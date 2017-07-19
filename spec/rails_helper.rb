@@ -6,9 +6,12 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'simplecov'
+require 'cancan/matchers'
+require 'database_cleaner'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 SimpleCov.start 'rails'
+DatabaseCleaner.strategy = :truncation
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

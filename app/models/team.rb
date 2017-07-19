@@ -21,6 +21,14 @@ class Team < ApplicationRecord
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
   before_post_process :rename_file
 
+  def owners
+    self.team_user_memberships.owners
+  end
+
+  def admins
+    self.team_user_memberships.admins
+  end
+
   private
   def rename_file
     self.logo.instance_write :file_name, "#{name.downcase}#{File.extname(logo_file_name)}"
