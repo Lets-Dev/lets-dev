@@ -14,26 +14,26 @@
       <img src="./assets/0.10.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-07-19T19:32:02+01:00">2017-07-19T19:32:02+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-07-19T19:50:49+01:00">2017-07-19T19:50:49+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">7.16%</span></span>
+    (<span class="covered_percent"><span class="red">7.69%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.48
+         0.49
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>54</b> files in total.
-    <b>698</b> relevant lines. 
-    <span class="green"><b>50</b> lines covered</span> and
+    <b>702</b> relevant lines. 
+    <span class="green"><b>54</b> lines covered</span> and
     <span class="red"><b>648</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -553,11 +553,11 @@
       <tr>
         <td class="strong"><a href="#14966069703f61ab538bd9d81866ce1267ae94e1" class="src_link" title="app/models/team_challenge_membership.rb">app/models/team_challenge_membership.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>6</td>
-        <td>4</td>
-        <td>4</td>
+        <td>12</td>
+        <td>8</td>
+        <td>8</td>
         <td>0</td>
-        <td>1.0</td>
+        <td>1.5</td>
       </tr>
       
       <tr>
@@ -783,19 +783,19 @@
           <div class="file_list_container" id="Models">
   <h2>
     <span class="group_name">Models</span>
-    (<span class="covered_percent"><span class="red">19.15%</span></span>
+    (<span class="covered_percent"><span class="red">20.5%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.41
+         1.42
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
     <b>17</b> files in total.
-    <b>235</b> relevant lines. 
-    <span class="green"><b>45</b> lines covered</span> and
+    <b>239</b> relevant lines. 
+    <span class="green"><b>49</b> lines covered</span> and
     <span class="red"><b>190</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -945,11 +945,11 @@
       <tr>
         <td class="strong"><a href="#14966069703f61ab538bd9d81866ce1267ae94e1" class="src_link" title="app/models/team_challenge_membership.rb">app/models/team_challenge_membership.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>6</td>
-        <td>4</td>
-        <td>4</td>
+        <td>12</td>
+        <td>8</td>
+        <td>8</td>
         <td>0</td>
-        <td>1.0</td>
+        <td>1.5</td>
       </tr>
       
       <tr>
@@ -6075,8 +6075,8 @@
     <h3>app/models/team_challenge_membership.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>4</b> relevant lines. 
-      <span class="green"><b>4</b> lines covered</span> and
+      <b>8</b> relevant lines. 
+      <span class="green"><b>8</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -6114,7 +6114,43 @@
           <code class="ruby">  validates :challenge, uniqueness: {scope: :team}</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="6">
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  validate :min_size_of_team</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  protected</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def min_size_of_team</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="10">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    errors.add(:team, :must_be_2) if self.team &amp;&amp; self.team.team_user_memberships.active.size &lt; 2</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
           
           
           <code class="ruby">end</code>
@@ -6202,13 +6238,13 @@
         <li class="missed" data-hits="0" data-linenumber="11">
           
           
-          <code class="ruby">  scope :owners, -&gt; () { where(role: :owner) }</code>
+          <code class="ruby">  scope :owners, -&gt; () { where(&#39;ended_at IS NULL AND role = ?&#39;, TeamUserMembership.roles[:owner]) }</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="12">
           
           
-          <code class="ruby">  scope :admins, -&gt; () { where(role: [:admin, :owner]) }</code>
+          <code class="ruby">  scope :admins, -&gt; () { where(&#39;ended_at IS NULL AND role IN (?)&#39;, [TeamUserMembership.roles[:admin], TeamUserMembership.roles[:owner]]) }</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="13">

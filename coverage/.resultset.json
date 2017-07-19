@@ -7,6 +7,12 @@
         1,
         null,
         1,
+        1,
+        null,
+        1,
+        1,
+        5,
+        null,
         null
       ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/team.rb": [
@@ -852,6 +858,6 @@
         0
       ]
     },
-    "timestamp": 1500489122
+    "timestamp": 1500490249
   }
 }

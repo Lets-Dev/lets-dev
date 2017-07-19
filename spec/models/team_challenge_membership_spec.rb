@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 describe TeamChallengeMembership do
+  before do
+    @t = FactoryGirl.create(:team_user_membership)
+    FactoryGirl.create(:team_user_membership, team: @t.team)
+  end
+
   it :has_valid_factory do
-    expect(FactoryGirl.build(:team_challenge_membership)).to be_valid
+    expect(FactoryGirl.build(:team_challenge_membership, team: @t.team)).to be_valid
   end
 
   context :validates do
@@ -18,8 +23,8 @@ describe TeamChallengeMembership do
 
     describe :uniqueness_of do
       it :membership_per_challenge_per_team do
-        t = FactoryGirl.create(:team_challenge_membership)
-        expect(FactoryGirl.build(:team_challenge_membership, team: t.team, challenge: t.challenge)).not_to be_valid
+        m = FactoryGirl.create(:team_challenge_membership, team: @t.team)
+        expect(FactoryGirl.build(:team_challenge_membership, team: m.team, challenge: m.challenge)).not_to be_valid
       end
     end
   end

@@ -8,8 +8,8 @@ class TeamUserMembership < ApplicationRecord
   validate :uniqueness_of_owner_membership
 
   scope :active, -> () { where('ended_at IS NULL') }
-  scope :owners, -> () { where(role: :owner) }
-  scope :admins, -> () { where(role: [:admin, :owner]) }
+  scope :owners, -> () { where('ended_at IS NULL AND role = ?', TeamUserMembership.roles[:owner]) }
+  scope :admins, -> () { where('ended_at IS NULL AND role IN (?)', [TeamUserMembership.roles[:admin], TeamUserMembership.roles[:owner]]) }
 
   protected
   def uniqueness_of_active_membership
