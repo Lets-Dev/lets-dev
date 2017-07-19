@@ -75,4 +75,5 @@ group :test do
   gem 'faker', '~> 1.8', '>= 1.8.4'
   gem 'simplecov'
   gem 'database_cleaner'
+  gem 'codeclimate-test-reporter', '~> 1.0', '>= 1.0.8'
 end
