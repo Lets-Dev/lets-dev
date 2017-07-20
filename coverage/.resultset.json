@@ -1,6 +1,38 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/sofianegargouri/Development/LetsDev/app/models/challenge_rating_criterium.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/sofianegargouri/Development/LetsDev/app/models/contact.rb": [
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/sofianegargouri/Development/LetsDev/app/models/financial_movement.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/sofianegargouri/Development/LetsDev/app/models/jury_challenge_rate.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/sofianegargouri/Development/LetsDev/app/models/subscription.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/team_challenge_membership.rb": [
         1,
         1,
@@ -689,9 +721,6 @@
         0,
         0,
         0,
-        0
-      ],
-      "/Users/sofianegargouri/Development/LetsDev/app/models/contact.rb": [
         0,
         0,
         0
@@ -707,15 +736,12 @@
         0,
         0,
         0,
+        0,
+        0,
         0
       ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/desk_user_membership.rb": [
         0,
-        0,
-        0,
-        0
-      ],
-      "/Users/sofianegargouri/Development/LetsDev/app/models/financial_movement.rb": [
         0,
         0,
         0
@@ -759,12 +785,6 @@
         0
       ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/language_set_membership.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/sofianegargouri/Development/LetsDev/app/models/subscription.rb": [
         0,
         0,
         0,
@@ -858,6 +878,6 @@
         0
       ]
     },
-    "timestamp": 1500493547
+    "timestamp": 1500583821
   }
 }

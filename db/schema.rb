@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529121529) do
+ActiveRecord::Schema.define(version: 20170720192409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "challenge_rating_criteria", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.uuid     "challenge_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["challenge_id"], name: "index_challenge_rating_criteria_on_challenge_id", using: :btree
+  end
 
   create_table "challenges", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "title"
@@ -67,6 +76,17 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.datetime "updated_at",   null: false
     t.index ["challenge_id"], name: "index_jury_challenge_memberships_on_challenge_id", using: :btree
     t.index ["user_id"], name: "index_jury_challenge_memberships_on_user_id", using: :btree
+  end
+
+  create_table "jury_challenge_rates", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.integer  "rating"
+    t.text     "informations"
+    t.uuid     "jury_challenge_membership_id"
+    t.uuid     "challenge_rating_criterium_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["challenge_rating_criterium_id"], name: "index_jury_challenge_rates_on_challenge_rating_criterium_id", using: :btree
+    t.index ["jury_challenge_membership_id"], name: "index_jury_challenge_rates_on_jury_challenge_membership_id", using: :btree
   end
 
   create_table "language_set_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

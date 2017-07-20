@@ -10,6 +10,8 @@ class Challenge < ApplicationRecord
   has_many :jury_challenge_memberships, dependent: :destroy
   has_many :jurys, through: :jury_challenge_memberships
 
+  validates_presence_of :title, :subject, :starts_at, :ends_at
+
   scope :published, -> () { where('starts_at <= ?', Time.now) }
   scope :ended, -> () { where('ends_at <= ?', Time.now) }
   scope :current, -> () { where('starts_at <= ?', Time.now) }
