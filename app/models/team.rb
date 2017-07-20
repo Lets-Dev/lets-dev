@@ -4,6 +4,8 @@ class Team < ApplicationRecord
   has_many :team_challenge_memberships, dependent: :destroy
   has_many :challenges, through: :team_challenge_memberships
 
+  validates :name, uniqueness: true, presence: true
+
   Paperclip.interpolates :name do |attachment, style|
     attachment.instance.name
   end
@@ -18,6 +20,14 @@ class Team < ApplicationRecord
                     default_url: '/images/missing/:class.png'
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
   before_post_process :rename_file
+
+  def owners
+    self.team_user_memberships.owners
+  end
+
+  def admins
+    self.team_user_memberships.admins
+  end
 
   private
   def rename_file

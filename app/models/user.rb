@@ -70,6 +70,14 @@ class User < ApplicationRecord
     Github.repos.list user: self.github_username
   end
 
+  def is_owner_of?(team)
+    team.owners.pluck(:user_id).include?(self.id)
+  end
+
+  def is_admin_of?(team)
+    team.admins.pluck(:user_id).include?(self.id)
+  end
+
   private
   def rename_file
     self.avatar.instance_write :file_name, "#{username.downcase}#{File.extname(avatar_file_name)}"

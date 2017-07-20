@@ -1,7 +1,7 @@
 require 'redcarpet/render_strip'
 
 class Challenge < ApplicationRecord
-  belongs_to :language_set
+  belongs_to :language_set, optional: false
 
   has_many :language_set_memberships, through: :language_set
   has_many :languages, through: :language_set_memberships
