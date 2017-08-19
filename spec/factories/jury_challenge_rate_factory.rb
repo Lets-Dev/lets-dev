@@ -4,6 +4,7 @@ FactoryGirl.define do
     informations { Faker::Movie.quote }
 
     jury_challenge_membership
+    team_challenge_membership
     challenge_rating_criterium
   end
 end

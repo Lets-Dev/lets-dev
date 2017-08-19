@@ -63,8 +63,10 @@
         1,
         1,
         1,
-        null,
         1,
+        1,
+        1,
+        null,
         null
       ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/subscription.rb": [
@@ -79,15 +81,18 @@
         1,
         null,
         1,
+        null,
+        1,
         1,
         null,
         1,
         1,
-        5,
+        11,
         null,
         null
       ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/team.rb": [
+        1,
         1,
         1,
         1,
@@ -117,6 +122,11 @@
         null,
         1,
         12,
+        null,
+        null,
+        1,
+        0,
+        0,
         null,
         null,
         1,
@@ -169,7 +179,7 @@
         1,
         1,
         null,
-        44,
+        50,
         51,
         13,
         null,
@@ -531,9 +541,19 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/Users/sofianegargouri/Development/LetsDev/app/controllers/manager/dashboard_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -559,6 +579,7 @@
         0
       ],
       "/Users/sofianegargouri/Development/LetsDev/app/controllers/manager/jury_challenge_rates_controller.rb": [
+        0,
         0,
         0,
         0,
@@ -1177,6 +1198,6 @@
         0
       ]
     },
-    "timestamp": 1503161057
+    "timestamp": 1503169007
   }
 }
