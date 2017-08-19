@@ -2,6 +2,8 @@ class TeamChallengeMembership < ApplicationRecord
   belongs_to :team, optional: false
   belongs_to :challenge, optional: false
 
+  has_many :jury_challenge_rates
+
   validates :challenge, uniqueness: {scope: :team}
   validate :min_size_of_team
 

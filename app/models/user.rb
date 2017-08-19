@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :teams, through: :team_user_memberships
   has_many :desk_user_memberships
   has_many :desks, through: :desk_user_memberships
+  has_many :jury_challenge_memberships
 
   validates :username, uniqueness: true, presence: true
   validates :email, uniqueness: true

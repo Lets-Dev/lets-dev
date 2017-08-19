@@ -9,8 +9,11 @@ Rails.application.routes.draw do
     resources :language_sets, only: [:index, :show]
     resources :missing, only: [:index, :show]
     resources :challenges, only: [:index, :show]
+    resources :jury_challenge_membership_requests, only: [:create]
     resources :teams
+    resources :team_user_membership_requests, only: [:create]
     resources :desks, only: [:index, :show]
+    resources :jury_challenge_rates, only: [:new, :create]
     resources :me do
       get :security, on: :collection
       get :overview, on: :collection
@@ -30,6 +33,10 @@ Rails.application.routes.draw do
 
   resources :home, only: :index
   resources :challenges, only: [:index, :show]
+  resources :jury_challenge_membership_invitations, only: [] do
+    get :accept, on: :member
+    get :decline, on: :member
+  end
   resources :team_user_membership_invitations, only: [] do
     get :accept, on: :member
     get :decline, on: :member

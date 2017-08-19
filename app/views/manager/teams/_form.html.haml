@@ -1,0 +1,10 @@
+= form_for [:manager, @manager_team] do |f|
+  - if @manager_team.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@manager_team.errors.count, "error")} prohibited this manager_team from being saved:"
+      %ul
+        - @manager_team.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

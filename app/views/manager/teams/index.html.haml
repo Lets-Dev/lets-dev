@@ -1,0 +1,25 @@
+%h1 Listing manager_teams
+
+%ul
+  - @own_memberships.each do |m|
+    %li
+      = "#{m.team.name} #{m.ended_at.nil? ? 'current' : 'past'}"
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @manager_teams.each do |manager_team|
+      %tr
+        %td= manager_team.name
+        %td= link_to 'Show', manager_team_path(manager_team)
+        %td= link_to t('partials.challenge_card.jury.request'), manager_team_user_membership_requests_path(team_id: manager_team.id), method: :post
+
+%br
+
+= link_to 'New Team', new_manager_team_path

@@ -1,0 +1,6 @@
+%h1
+  = t('mailers.jury_invitation.send_invitation.hello')
+%p
+  = t('mailers.jury_invitation.send_invitation.body_html', challenge_title: @jury_invitation.challenge.title)
+
+= render partial: 'shared/mailers/link_button', locals: {link: accept_jury_challenge_membership_invitation_url(@jury_invitation.id), text: t('mailers.jury_invitation.send_invitation.button')}

@@ -5,6 +5,44 @@
     color: rgba(0, 0, 0, 0.7);
     margin-bottom: 20px;
   }
+  
+  .leaderboard {
+    .team {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px 0 50px;
+      height: 63px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-bottom: none;
+
+      &:last-child {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+      }
+
+      .reward {
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        top: -15px;
+        left: -15px;
+      }
+
+      .name {
+        color: rgba(0,0,0,0.7);
+        font-size: 24px;
+        font-weight: 300;
+      }
+
+      .score {
+        color: rgba(0,0,0,0.3);
+        font-size: 24px;
+        font-weight: 300;
+      }
+    }
+  }
 
   @import '../shared/challenge_card';
 }

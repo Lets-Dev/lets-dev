@@ -1,0 +1,20 @@
+version: '2'
+services:
+  lets-dev-db:
+    image: postgres:9.6
+    container_name: letsdev-db
+    environment:
+      POSTGRES_DB: letsdev_development
+      POSTGRES_USER: letsdev
+      POSTGRES_PASSWORD: 
+    ports:
+      - 5461:5432/tcp
+  lets-dev-db-test:
+    image: postgres:9.6
+    container_name: letsdev-db-test
+    environment:
+      POSTGRES_DB: letsdev_test
+      POSTGRES_USER: letsdev
+      POSTGRES_PASSWORD: 
+    ports:
+      - 5462:5432/tcp

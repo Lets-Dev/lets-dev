@@ -24,3 +24,19 @@
   .column.is-third
     %h2
       = t('views.manager.challenges.rank')
+    .leaderboard
+      - @best_teams.each_with_index do |team, i|
+        .team
+          - if i == 0
+            .reward
+              = image_tag 'gold-badge.png'
+          - elsif i == 1
+            .reward
+              = image_tag 'silver-badge.png'
+          - elsif i == 2
+            .reward
+              = image_tag 'bronze-badge.png'
+          .name
+            = team['team_name']
+          .score
+            = team['rating']

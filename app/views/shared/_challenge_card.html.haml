@@ -9,6 +9,27 @@
     - challenge.languages.each do |l|
       = image_tag l.logo.url(:thumb), alt: l.name, title: l.name
   - if controller_path.include? 'manager'
-    = link_to t('partials.challenge_card.view_subject'), manager_challenge_path(challenge)
+    = link_to t('partials.challenge_card.view_subject'), manager_challenge_path(challenge), class: 'button'
   - else
-    = link_to t('partials.challenge_card.view_subject'), challenge_path(challenge)
+    = link_to t('partials.challenge_card.view_subject'), challenge_path(challenge), class: 'button'
+  - unless current_user.nil?
+    - request = JuryChallengeMembershipRequest.where(user: current_user, challenge: challenge)
+    - if request.size > 0
+      - request = request.first
+      - if request.pending?
+        %span.pending
+          = t('partials.challenge_card.jury.pending')
+      - elsif request.accepted?
+        - if challenge.can_be_rated?
+          - if challenge.jury_challenge_rates.joins(:jury_challenge_membership).where('jury_challenge_memberships.user_id = ?', current_user.id).size > 0
+            = t('partials.challenge_card.jury.rated')
+          - else
+            = link_to t('partials.challenge_card.jury.rate'), new_manager_jury_challenge_rate_path(challenge_id: challenge.id)
+        - else
+          %span.accepted
+            = t('partials.challenge_card.jury.accepted')
+      - elsif request.declined?
+        %span.declined
+          = t('partials.challenge_card.jury.declined')
+    - else
+      = link_to t('partials.challenge_card.jury.request'), manager_jury_challenge_membership_requests_path(challenge_id: challenge.id), method: :post

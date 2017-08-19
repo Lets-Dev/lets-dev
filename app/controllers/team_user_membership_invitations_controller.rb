@@ -1,5 +1,5 @@
 class TeamUserMembershipInvitationsController < ApplicationController
-  before_action :set_invitation_by_code
+  before_action :set_invitation
 
   def accept
 
@@ -60,8 +60,8 @@ class TeamUserMembershipInvitationsController < ApplicationController
   end
 
   private
-  def set_invitation_by_code
-    @invitation = TeamUserMembershipInvitation.find_by(code: params[:id])
+  def set_invitation
+    @invitation = TeamUserMembershipInvitation.find(params[:id])
   end
 
   def redirect_path
