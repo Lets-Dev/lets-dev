@@ -1,0 +1,8 @@
+.team-card
+  = image_tag team.logo.url
+  %h3
+    = link_to team.name, manager_team_path(team)
+  %p
+    = team.description || "Aucune description"
+  - if !current_user.has_team?
+    = link_to t('partials.challenge_card.jury.request'), manager_team_user_membership_requests_path(team_id: team.id), method: :post

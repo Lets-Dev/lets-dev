@@ -4,30 +4,31 @@
   = "#{t('views.manager.dashboard')} - Let's Dev !"
 
 #dashboard
-  .leaderboard.columns
-    .column.is-third
-      .second
-        = image_tag 'silver-medal.png'
-        %h1
-          = @best_teams[1]["team_name"] unless @best_teams[1].nil?
-        %h3
-          = @best_teams[1]["rating"] unless @best_teams[1].nil?
-    .column.is-third
-      .first
-        = image_tag 'gold-medal.png'
-        %h1
-          = @best_teams[0]["team_name"] unless @best_teams[0].nil?
-        %h3
-          = @best_teams[0]["rating"] unless @best_teams[0].nil?
-    .column.is-third
-      .third
-        = image_tag 'bronze-medal.png'
-        %h1
-          = @best_teams[2]["team_name"] unless @best_teams[2].nil?
-        %h3
-          = @best_teams[2]["rating"] unless @best_teams[2].nil?
-  .has-text-centered
-    = link_to 'Voir tout le classement', manager_challenges_path
+  - if @best_teams.size > 0
+    .leaderboard.columns
+      .column.is-third
+        .second
+          = image_tag 'silver-medal.png'
+          %h1
+            = @best_teams[1]["team_name"] unless @best_teams[1].nil?
+          %h3
+            = @best_teams[1]["rating"] unless @best_teams[1].nil?
+      .column.is-third
+        .first
+          = image_tag 'gold-medal.png'
+          %h1
+            = @best_teams[0]["team_name"] unless @best_teams[0].nil?
+          %h3
+            = @best_teams[0]["rating"] unless @best_teams[0].nil?
+      .column.is-third
+        .third
+          = image_tag 'bronze-medal.png'
+          %h1
+            = @best_teams[2]["team_name"] unless @best_teams[2].nil?
+          %h3
+            = @best_teams[2]["rating"] unless @best_teams[2].nil?
+    .has-text-centered
+      = link_to 'Voir tout le classement', manager_challenges_path
   %h2
     = t('views.manager.challenges.current')
   - @challenges.in_groups_of(3, false).each do |challenges|

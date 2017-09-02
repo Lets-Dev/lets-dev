@@ -79,6 +79,10 @@ class User < ApplicationRecord
     team.admins.pluck(:user_id).include?(self.id)
   end
 
+  def has_team?
+    team_user_memberships.where(ended_at: nil).size > 0
+  end
+
   private
   def rename_file
     self.avatar.instance_write :file_name, "#{username.downcase}#{File.extname(avatar_file_name)}"

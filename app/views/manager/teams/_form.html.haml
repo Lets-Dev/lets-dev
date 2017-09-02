@@ -5,6 +5,10 @@
       %ul
         - @manager_team.errors.full_messages.each do |msg|
           %li= msg
-
+    
+  .team-creation
+    = f.file_field :logo
+    = f.text_field :name, autofocus: true
+    = f.text_area :description
   .actions
     = f.submit 'Save'

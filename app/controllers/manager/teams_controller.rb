@@ -29,7 +29,8 @@ class Manager::TeamsController < Manager::BaseController
 
     respond_to do |format|
       if @manager_team.save
-        format.html { redirect_to @manager_team, notice: 'Team was successfully created.' }
+        TeamUserMembership.create(team: @manager_team, user: current_user, role: :owner)
+        format.html { redirect_to manager_team_path(@manager_team), notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @manager_team }
       else
         format.html { render :new }
@@ -70,6 +71,6 @@ class Manager::TeamsController < Manager::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manager_team_params
-      params.fetch(:manager_team, {})
+      params.require(:team).permit(:name, :description, :logo)
     end
 end

@@ -1,7 +1,7 @@
-%h1 Editing manager_team
+- content_for :navigation do
+  = @manager_team.name
+- content_for :page_title do
+  = "#{@manager_team.name} - Let's Dev !"
 
 = render 'form'
 
-= link_to 'Show', @manager_team
-\|
-= link_to 'Back', manager_teams_path

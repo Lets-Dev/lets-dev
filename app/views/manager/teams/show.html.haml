@@ -1,6 +1,25 @@
+- content_for :navigation do
+  = @manager_team.name
+- content_for :page_title do
+  = "#{@manager_team.name} - Let's Dev !"
+
 %p#notice= notice
 
-
-= link_to 'Edit', edit_manager_team_path(@manager_team)
-\|
-= link_to 'Back', manager_teams_path
+.columns
+  .column
+    %p
+      = @manager_team.description || "Aucune description"
+  .column
+    %h3
+      Membres de l'équipe
+    %ul
+      - @manager_team.users.each do |u|
+        %li= u.username
+  .column
+    %h3
+      Participations
+    %ul
+      - @manager_team.challenges.each do |c|
+        %li= c.title
+- if current_user.is_owner_of?(@manager_team)
+  = link_to 'Edit', edit_manager_team_path(@manager_team)

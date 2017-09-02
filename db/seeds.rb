@@ -95,7 +95,7 @@ end
 
 Team.create(name: "Let's Dev Team !")
 TeamUserMembership.create(user: database_users.first, team: Team.first, role: :admin)
-TeamUserMembership.create(user: database_users.last, team: Team.first, role: :admin)
+TeamUserMembership.create(user: database_users.last, team: Team.first, role: :owner)
 
 c = Challenge.first
 c.update(ends_at: Time.now - 1.day)

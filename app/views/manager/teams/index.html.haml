@@ -1,24 +1,13 @@
-%h1 Listing manager_teams
+- content_for :navigation do
+  = t('activerecord.models.team.other')
+- content_for :page_title do
+  = "#{t('activerecord.models.team.other')} - Let's Dev !"
 
-%ul
-  - @own_memberships.each do |m|
-    %li
-      = "#{m.team.name} #{m.ended_at.nil? ? 'current' : 'past'}"
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
-
-  %tbody
-    - @manager_teams.each do |manager_team|
-      %tr
-        %td= manager_team.name
-        %td= link_to 'Show', manager_team_path(manager_team)
-        %td= link_to t('partials.challenge_card.jury.request'), manager_team_user_membership_requests_path(team_id: manager_team.id), method: :post
+- @manager_teams.in_groups_of(4, false).each do |teams|
+  .columns
+    - teams.each do |t|
+      .column
+        = render partial: 'shared/team_card', locals: {team: t}
 
 %br
 
