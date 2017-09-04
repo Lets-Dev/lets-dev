@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     resources :challenges, only: [:index, :show]
     resources :jury_challenge_membership_requests, only: [:create]
     resources :teams
-    resources :team_user_membership_requests, only: [:create]
+    resources :team_user_membership_requests, only: [:create] do
+      get :accept, on: :member
+      get :decline, on: :member
+    end
+    resources :team_challenge_memberships, only: [:create]
     resources :desks, only: [:index, :show]
     resources :jury_challenge_rates, only: [:new, :create]
     resources :me do

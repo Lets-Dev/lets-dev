@@ -178,6 +178,10 @@ fr:
             base:
               must_be_uniq: "doit être unique"
               uniq_owner: "doit avoir un seul propriétaire"
+        team_challenge_membership:
+          attributes:
+            github_repository:
+              must_exist: "doit exister"
 
   date:
     abbr_day_names:

@@ -5,4 +5,4 @@
   %p
     = team.description || "Aucune description"
   - if !current_user.has_team?
-    = link_to t('partials.challenge_card.jury.request'), manager_team_user_membership_requests_path(team_id: team.id), method: :post
+    = link_to "Demander à rejoindre", manager_team_user_membership_requests_path(team_id: team.id), method: :post

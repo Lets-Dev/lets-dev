@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  has_many :team_user_membership_requests, dependent: :destroy
   has_many :team_user_memberships, dependent: :destroy
   has_many :users, through: :team_user_memberships
   has_many :team_challenge_memberships, dependent: :destroy

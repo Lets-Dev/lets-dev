@@ -33,3 +33,5 @@
           = t('partials.challenge_card.jury.declined')
     - else
       = link_to t('partials.challenge_card.jury.request'), manager_jury_challenge_membership_requests_path(challenge_id: challenge.id), method: :post
+    - if defined? repo
+      = link_to "Voir le dépôt", "https://github.com/#{repo}", target: :_blank

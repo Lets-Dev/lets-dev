@@ -11,4 +11,5 @@
 
 %br
 
-= link_to 'New Team', new_manager_team_path
+- unless current_user.has_team?
+  = link_to 'New Team', new_manager_team_path

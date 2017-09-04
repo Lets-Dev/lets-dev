@@ -44,7 +44,7 @@ class Manager::TeamsController < Manager::BaseController
   def update
     respond_to do |format|
       if @manager_team.update(manager_team_params)
-        format.html { redirect_to @manager_team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to manager_team_path(@manager_team), notice: 'Team was successfully updated.' }
         format.json { render :show, status: :ok, location: @manager_team }
       else
         format.html { render :edit }

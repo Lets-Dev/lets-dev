@@ -83,6 +83,11 @@ class User < ApplicationRecord
     team_user_memberships.where(ended_at: nil).size > 0
   end
 
+  def current_team
+    return team_user_memberships.where(ended_at: nil).first.team if team_user_memberships.where(ended_at: nil).size > 0
+    nil
+  end
+
   private
   def rename_file
     self.avatar.instance_write :file_name, "#{username.downcase}#{File.extname(avatar_file_name)}"
