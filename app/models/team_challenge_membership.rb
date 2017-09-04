@@ -16,6 +16,7 @@ class TeamChallengeMembership < ApplicationRecord
   end
 
   def existence_of_github_repo
+    return if self.github_repository.nil?
     repo = self.github_repository.split('/')
     begin 
       Github.repos.get user: repo.first, repo: repo.last
