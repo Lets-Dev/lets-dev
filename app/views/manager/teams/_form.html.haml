@@ -11,6 +11,6 @@
       .logo
         = image_tag @manager_team.logo.url
       = f.file_field :logo
-      = f.text_field :name, autofocus: true
-      = f.text_area :description
+      = f.text_field :name, autofocus: true, placeholder: "Nom de l'équipe"
+      = f.text_area :description, placeholder: 'Description'
       = f.submit 'Enregistrer', class: 'gradient-button'

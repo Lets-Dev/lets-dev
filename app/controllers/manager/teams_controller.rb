@@ -16,6 +16,7 @@ class Manager::TeamsController < Manager::BaseController
   # GET /manager/teams/new
   def new
     @manager_team = Team.new
+    redirect_to manager_teams_path and return unless can? :create, @manager_team
   end
 
   # GET /manager/teams/1/edit

@@ -1,5 +1,6 @@
-%h1 New manager_team
+- content_for :navigation do
+  Créer une équipe
+- content_for :page_title do
+  = "Créer une équipe - Let's Dev !"
 
 = render 'form'
-
-= link_to 'Back', manager_teams_path

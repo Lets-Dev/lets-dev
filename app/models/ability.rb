@@ -6,6 +6,10 @@ class Ability
     if user.admin?
       can :manage, :all
     else
+      can :create, Team do |team|
+        !user.has_team?
+      end
+
       can :manage, Team do |team|
         user.is_owner_of?(team)
       end
