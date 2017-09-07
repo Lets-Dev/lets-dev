@@ -1,0 +1,21 @@
+- content_for :navigation do
+  = t('activerecord.models.team.other')
+- content_for :page_title do
+  = "#{t('activerecord.models.team.other')} - Let's Dev !"
+
+.columns
+  .column
+    %h2
+      Liste des équipes
+    - @manager_teams.in_groups_of(4, false).each do |teams|
+      .columns
+        - teams.each do |t|
+          .column
+            = render partial: 'shared/team_card', locals: {team: t}
+  .column.is-3
+    %h2
+      Mon équipe
+    = render partial: 'shared/team_card', locals: {team: current_user.current_team}
+
+- unless current_user.has_team?
+  = link_to 'New Team', new_manager_team_path

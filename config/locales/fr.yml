@@ -72,6 +72,12 @@ fr:
           connect: "Connecter"
 
   controllers:
+    jury_challenge_membership_invitations:
+      doesnt_exist: "Cette invitation n'existe pas"
+      expired: "Cette invitation a expiré"
+      accepted: "Vous avez rejoint le challenge %{challenge_title}"
+      declined: "Vous avez annulé l'invitation au challenge %{challenge_title}"
+      wrong_user: "Cette invitation n'est pas destinée à l'utilisateur connecté"
     team_user_membership_invitations:
       doesnt_exist: "Cette invitation n'existe pas"
       expired: "Cette invitation a expiré"
@@ -90,6 +96,13 @@ fr:
   partials:
     challenge_card:
       view_subject: "Voir le sujet"
+      jury:
+        request: "Demander à être jury"
+        pending: "Demande en attente"
+        accepted: "Demande acceptée"
+        declined: "Demande refusée"
+        rate: "Évaluer ce challenge"
+        rated: "Évaluation terminée"
 
   mailers:
     application:
@@ -100,6 +113,12 @@ fr:
         hello: "Bonjour,"
         body_html: "Tu as été invité à rejoindre l'équipe <b style: 'font-weight: 400;'>%{team_name}</b> pour participer aux challenges Let's Dev ! Pour la rejoindre, il te suffit de cliquer sur le bouton ci-dessous."
         button: "Rejoindre l'équipe"
+    jury_invitation:
+      send_invitation:
+        subject: "[Let's Dev !] Votre invitation en tant que jury au challenge %{challenge_title}"
+        hello: "Bonjour,"
+        body_html: "Tu as été invité à évaluer le challenge <b style: 'font-weight: 400;'>%{challenge_title}</b> ! Pour accepter l'invitation, il te suffit de cliquer sur le bouton ci-dessous."
+        button: "Rejoindre le jury"
 
   activerecord:
     attributes:
@@ -149,11 +168,20 @@ fr:
           has_one: "Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record} dépendant(e) existe"
           has_many: "Vous ne pouvez pas supprimer l'enregistrement parce que les %{record} dépendants existent"
       models:
+        jury_user_membership:
+          attributes:
+            base:
+              must_be_uniq: "doit être unique"
+              uniq_owner: "doit avoir un seul propriétaire"
         team_user_membership:
           attributes:
             base:
               must_be_uniq: "doit être unique"
               uniq_owner: "doit avoir un seul propriétaire"
+        team_challenge_membership:
+          attributes:
+            github_repository:
+              must_exist: "doit exister"
 
   date:
     abbr_day_names:

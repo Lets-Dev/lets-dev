@@ -1,0 +1,11 @@
+.team-card
+  = image_tag team.logo.url
+  %h3
+    = link_to team.name, manager_team_path(team)
+  %p
+    - if team.description.length <= 0
+      Aucune description
+    - else  
+      = team.description
+  - if !current_user.has_team?
+    = link_to "Demander à rejoindre", manager_team_user_membership_requests_path(team_id: team.id), method: :post

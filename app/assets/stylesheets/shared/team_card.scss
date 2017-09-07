@@ -1,0 +1,80 @@
+.team-card {
+  border-radius: 4px;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  padding: 30px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+
+  img {
+    width: 5rem;
+  }
+
+  h3 a {
+    font-size: 26px;
+    font-weight: 300;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+  }
+
+  span {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.3);
+
+    &.pending {
+      color: $orange;
+    }
+
+    &.accepted {
+      color: $green;
+    }
+
+    &.declined {
+      color: $red;
+    }
+  }
+
+  .languages {
+    img {
+      height: 30px;
+      width: 30px;
+      margin: 10px;
+    }
+  }
+
+  a {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.3);
+    text-decoration: underline;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.5);
+    }
+  
+    &.button {
+      display: block;
+      font-size: 24px;
+      font-weight: 300;
+      text-align: center;
+      color: #ffffff;
+      height: 50px;
+      line-height: 50px;
+      text-decoration: none;
+      border-radius: 25px;
+      background-image: linear-gradient(81deg, #ffc837, #ff8008);
+      box-shadow: 0 0 10px 0 rgba(255, 200, 55, 0.75);
+      padding: 0 25px;
+      margin: 10px 0;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 0 20px 0 rgba(255, 200, 55, 1);
+      }
+    }
+  }
+}

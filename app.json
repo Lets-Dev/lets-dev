@@ -1,0 +1,66 @@
+{
+  "name": "lets-dev",
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate | bundle exec rake db:seed"
+  },
+  "env": {
+    "LANG": {
+      "required": true
+    },
+    "LETS_DEV_FB_APP_ID": {
+      "required": true
+    },
+    "LETS_DEV_FB_APP_SECRET": {
+      "required": true
+    },
+    "LETS_DEV_GITHUB_APP_ID": {
+      "required": true
+    },
+    "LETS_DEV_GITHUB_APP_SECRET": {
+      "required": true
+    },
+    "LETS_DEV_GOOGLE_APP_ID": {
+      "required": true
+    },
+    "LETS_DEV_GOOGLE_APP_SECRET": {
+      "required": true
+    },
+    "LETS_DEV_SMTP_ADDRESS": {
+      "required": true
+    },
+    "LETS_DEV_SMTP_PASSWORD": {
+      "required": true
+    },
+    "LETS_DEV_SMTP_PORT": {
+      "required": true
+    },
+    "LETS_DEV_SMTP_USERNAME": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}

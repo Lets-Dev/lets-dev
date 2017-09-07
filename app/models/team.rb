@@ -1,8 +1,10 @@
 class Team < ApplicationRecord
+  has_many :team_user_membership_requests, dependent: :destroy
   has_many :team_user_memberships, dependent: :destroy
   has_many :users, through: :team_user_memberships
   has_many :team_challenge_memberships, dependent: :destroy
   has_many :challenges, through: :team_challenge_memberships
+  has_many :jury_challenge_rates, through: :team_challenge_memberships
 
   validates :name, uniqueness: true, presence: true
 
@@ -27,6 +29,11 @@ class Team < ApplicationRecord
 
   def admins
     self.team_user_memberships.admins
+  end
+
+  def average
+    rates = self.jury_challenge_rates.pluck(:rating)
+    rates.inject(&:+) / rates.size
   end
 
   private

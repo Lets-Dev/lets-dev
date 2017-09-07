@@ -90,6 +90,13 @@ en:
   partials:
     challenge_card:
       view_subject: "View subject"
+      jury:
+        request: "Request jury membership"
+        pending: "Request pending"
+        accepted: "Request accepted"
+        declined: "Request declined"
+        rate: "Rate this challenge"
+        rated: "Rating done"
 
   mailers:
     application:

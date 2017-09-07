@@ -6,6 +6,11 @@
 #challenge
   %h2
     = @challenge.title
+  - if current_user.current_team && current_user.is_admin_of?(current_user.current_team) && !current_user.current_team.challenges.include?(@challenge)
+    = form_for [:manager, TeamChallengeMembership.new] do |f|
+      = f.hidden_field :challenge_id, value: @challenge.id
+      = f.text_field :github_repository, placeholder: 'Repo Github (exemple: facebook/react)'
+      = f.submit 'Inscrire mon équipe'
   .subject
     = raw Markdown.new(@challenge.subject).to_html
   #disqus_thread

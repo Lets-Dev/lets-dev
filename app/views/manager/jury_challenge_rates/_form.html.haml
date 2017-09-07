@@ -1,0 +1,24 @@
+- @challenge_memberships.each do |m|
+  %h2
+    = m.team.name
+    %small
+      = link_to 'Github repository', "https://github.com/#{m.github_repository}", target: :_blank
+  %hr
+  - @criteria.in_groups_of(4, false).each do |criterium_group|
+    .columns
+      - criterium_group.each do |criterium|
+        .column
+          .criterium-container{'data-criterium-id' => criterium.id, 'data-membership-id' => m.id}
+            %h3
+              = criterium.name
+            %p 
+              = criterium.description
+            %select{'data-modifier' => 'star-rating'}
+              - (1..5).each do |r|
+                %option{value: r}
+                  = r
+#rating-button-container.has-text-right
+
+%script
+  window.criteria = #{raw @criteria.map {|c| @challenge_memberships.map {|m| {team_challenge_membership_id: m.id, challenge_rating_criterium_id: c.id}}}.flatten.to_json }
+= javascript_include_tag 'manager/jury_challenge_rates'

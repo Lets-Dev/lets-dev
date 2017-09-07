@@ -6,6 +6,9 @@ class Ability
     if user.admin?
       can :manage, :all
     else
+      can :create, Team do |team|
+        !user.has_team?
+      end
 
       can :manage, Team do |team|
         user.is_owner_of?(team)
@@ -25,6 +28,10 @@ class Ability
 
       can :manage, TeamUserMembershipInvitation do |tum|
         user.is_admin_of?(tum.team)
+      end
+
+      can :manage, JuryChallengeRate do |jcr|
+        jcr.challenge.jurys.pluck(:id).include?(user.id) && jcr.challenge.ends_at < Time.now && jcr.challenge.ends_at > Time.now - 1.month
       end
     end
   end

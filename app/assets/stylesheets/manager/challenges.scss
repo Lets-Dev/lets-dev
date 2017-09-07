@@ -5,6 +5,44 @@
     color: rgba(0, 0, 0, 0.7);
     margin-bottom: 20px;
   }
+  
+  .leaderboard {
+    .team {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px 0 50px;
+      height: 63px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-bottom: none;
+
+      &:last-child {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+      }
+
+      .reward {
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        top: -15px;
+        left: -15px;
+      }
+
+      .name {
+        color: rgba(0,0,0,0.7);
+        font-size: 24px;
+        font-weight: 300;
+      }
+
+      .score {
+        color: rgba(0,0,0,0.3);
+        font-size: 24px;
+        font-weight: 300;
+      }
+    }
+  }
 
   @import '../shared/challenge_card';
 }
@@ -40,5 +78,31 @@
 
   #disqus_thread {
     width: 100%;
+  }
+}
+
+#new_team_challenge_membership {
+  display: flex;
+  flex-direction: row;
+  
+  input[type=text] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    min-width: 25rem;
+  }
+
+  input[type=submit] {
+    margin-top: 20px;
+    height: 50px;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    background: linear-gradient(45deg, #FFC837 0%, #FF8008 100%);
+    box-shadow: 0 0 10px 0 rgba(255, 200, 55, 0.75);
+    border: none;
+    padding: 0 25px;
+    font-size: 24px;
+    font-weight: 300;
+    color: #fff;
+    cursor: pointer;
   }
 }

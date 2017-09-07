@@ -94,4 +94,14 @@ vel.',
 end
 
 Team.create(name: "Let's Dev Team !")
-TeamUserMembership.create(user: database_users.last, team: Team.first, role: :admin)
+TeamUserMembership.create(user: database_users.first, team: Team.first, role: :admin)
+TeamUserMembership.create(user: database_users.last, team: Team.first, role: :owner)
+
+c = Challenge.first
+c.update(ends_at: Time.now - 1.day)
+ChallengeRatingCriterium.create(challenge: c, name: 'First criteria', description: 'The first one')
+ChallengeRatingCriterium.create(challenge: c, name: 'Second criteria', description: 'The second one')
+
+TeamChallengeMembership.create(team: Team.first, challenge: c)
+
+JuryChallengeMembershipRequest.create(challenge: c, user: database_users.last, status: :accepted)

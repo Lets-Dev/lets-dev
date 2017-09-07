@@ -17,6 +17,6 @@ class TeamUserMembership < ApplicationRecord
   end
 
   def uniqueness_of_owner_membership
-    errors.add(:base, :uniq_owner) if self.team && self.team.team_user_memberships.owners.size > (self.id.nil? ? 0 : 1)
+    errors.add(:base, :uniq_owner) if self.team && self.owner? && self.team.team_user_memberships.owners.size > (self.id.nil? ? 0 : 1)
   end
 end
