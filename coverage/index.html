@@ -14,14 +14,14 @@
       <img src="./assets/0.10.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-09-07T20:47:41+02:00">2017-09-07T20:47:41+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-09-07T21:04:03+02:00">2017-09-07T21:04:03+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">7.5%</span></span>
+    (<span class="covered_percent"><span class="red">7.49%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>72</b> files in total.
-    <b>1107</b> relevant lines. 
+    <b>1108</b> relevant lines. 
     <span class="green"><b>83</b> lines covered</span> and
-    <span class="red"><b>1024</b> lines missed </span>
+    <span class="red"><b>1025</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -723,10 +723,10 @@
       <tr>
         <td class="strong"><a href="#14966069703f61ab538bd9d81866ce1267ae94e1" class="src_link" title="app/models/team_challenge_membership.rb">app/models/team_challenge_membership.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>27</td>
-        <td>27</td>
+        <td>28</td>
+        <td>28</td>
         <td>0</td>
-        <td>27</td>
+        <td>28</td>
         <td>0.0</td>
       </tr>
       
@@ -966,7 +966,7 @@
           <div class="file_list_container" id="Models">
   <h2>
     <span class="group_name">Models</span>
-    (<span class="covered_percent"><span class="red">22.41%</span></span>
+    (<span class="covered_percent"><span class="red">22.35%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -977,9 +977,9 @@
   <a name="Models"></a>
   <div>
     <b>22</b> files in total.
-    <b>348</b> relevant lines. 
+    <b>349</b> relevant lines. 
     <span class="green"><b>78</b> lines covered</span> and
-    <span class="red"><b>270</b> lines missed </span>
+    <span class="red"><b>271</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -1168,10 +1168,10 @@
       <tr>
         <td class="strong"><a href="#14966069703f61ab538bd9d81866ce1267ae94e1" class="src_link" title="app/models/team_challenge_membership.rb">app/models/team_challenge_membership.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>27</td>
-        <td>27</td>
+        <td>28</td>
+        <td>28</td>
         <td>0</td>
-        <td>27</td>
+        <td>28</td>
         <td>0.0</td>
       </tr>
       
@@ -8953,9 +8953,9 @@
     <h3>app/models/team_challenge_membership.rb</h3>
     <h4><span class="red">0.0 %</span> covered</h4>
     <div>
-      <b>27</b> relevant lines. 
+      <b>28</b> relevant lines. 
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>27</b> lines missed.</span>
+      <span class="red"><b>28</b> lines missed.</span>
     </div>
   </div>
   
@@ -9073,52 +9073,58 @@
         <li class="missed" data-hits="0" data-linenumber="19">
           
           
-          <code class="ruby">    return if self.github_repository.nil?</code>
+          <code class="ruby">    if self.github_repository.length &gt; 0 &amp;&amp; Rails.env != &#39;test&#39;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="20">
           
           
-          <code class="ruby">    repo = self.github_repository.split(&#39;/&#39;)</code>
+          <code class="ruby">      repo = self.github_repository.split(&#39;/&#39;)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="21">
           
           
-          <code class="ruby">    begin </code>
+          <code class="ruby">      begin </code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="22">
           
           
-          <code class="ruby">      Github.repos.get user: repo.first, repo: repo.last</code>
+          <code class="ruby">        Github.repos.get user: repo.first, repo: repo.last</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="23">
           
           
-          <code class="ruby">    rescue</code>
+          <code class="ruby">      rescue</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="24">
           
           
-          <code class="ruby">      errors.add(:github_repository, :must_exist)</code>
+          <code class="ruby">        errors.add(:github_repository, :must_exist)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="25">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="26">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="27">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="28">
           
           
           <code class="ruby">end</code>
