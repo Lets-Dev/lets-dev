@@ -16,7 +16,7 @@ class TeamChallengeMembership < ApplicationRecord
   end
 
   def existence_of_github_repo
-    if self.github_repository.length > 0 && Rails.env != 'test'
+    if !self.github_repository.nil? && self.github_repository.length > 0 && Rails.env != 'test'
       repo = self.github_repository.split('/')
       begin 
         Github.repos.get user: repo.first, repo: repo.last
