@@ -2,5 +2,9 @@
   .navigation
     = yield :navigation
   #logged-user
-    = link_to current_user.username, manager_me_index_path
-    = image_tag current_user.image
+    = link_to overview_manager_me_index_path do
+      = current_user.username
+      = image_tag current_user.avatar
+      - if @pending_invitations.size > 0
+        .badge
+          = @pending_invitations.size

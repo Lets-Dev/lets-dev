@@ -13,7 +13,11 @@
  *= require jquery
  *= require jquery_ujs
  *= require turbolinks
+ *= require ../toastr
  */
+toastr.options.progressBar = true;
+toastr.options.positionClass='toast-bottom-right';
+
 window.addEventListener('scroll', function (e) {
     var s = $(window).scrollTop(),
         d = $(document).height(),

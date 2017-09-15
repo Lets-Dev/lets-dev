@@ -1,0 +1,147 @@
+#me {
+  margin: -30px -40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+  > .columns {
+    margin: 0;
+  }
+
+  .side-navigation {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0;
+
+    a {
+      color: rgba(0, 0, 0, 0.3);
+      display: block;
+      min-height: 50px;
+      line-height: 50px;
+      text-transform: uppercase;
+      padding: 0 20px;
+
+      &.active {
+        color: $orange;
+        background: rgba(0, 0, 0, 0.025);
+      }
+
+      &.logout {
+        color: rgba(255, 0, 0, 0.3);
+      }
+    }
+  }
+
+  .container {
+    padding: 30px 40px;
+  }
+
+  .profile-picture {
+    border-radius: 100%;
+  }
+
+  .invitations {
+    display: flex;
+    flex-direction: column;
+
+    .invitation {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img {
+          height: 50px;
+          margin-right: 20px;
+        }
+      }
+
+      .right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .answer-button {
+          height: 30px;
+          width: 30px;
+          border-radius: 15px;
+          border: 1px solid;
+          text-align: center;
+          line-height: 30px;
+          margin-left: 10px;
+          transition: all 0.3s ease;
+
+          &.accept {
+            color: $green;
+            border-color: $green;
+            &:hover {
+              background-color: $green;
+              color: #fff;
+            }
+          }
+
+          &.decline {
+            color: $red;
+            border-color: $red;
+            &:hover {
+              background-color: $red;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .infos {
+    img {
+      margin-top: 20px;
+      border-radius: 100%;
+    }
+  }
+  .social-button {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 25px;
+    box-sizing: content-box;
+
+    &.facebook {
+      background-color: $facebook;
+      border: 1px solid darken($facebook, 10%);
+    }
+
+    &.github {
+      background-color: $github;
+      border: 1px solid darken($github, 10%);
+    }
+
+    &.google {
+      background-color: $google;
+      border: 1px solid darken($google, 10%);
+    }
+
+    img {
+      height: 50px;
+      width: 50px;
+      border-radius: 25px;
+    }
+
+    span {
+      margin-left: 20px;
+      color: #fff;
+      font-size: 18px;
+
+      &.mdi {
+        font-size: 24px;
+      }
+    }
+  }
+}

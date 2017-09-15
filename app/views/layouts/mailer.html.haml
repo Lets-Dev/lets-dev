@@ -1,8 +1,18 @@
-!!!
-%html
+%hmtl
   %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    :css
-      /* Email styles need to be inline */
-  %body
-    = yield
+    %link{href:'https://fonts.googleapis.com/css?family=Montserrat:200,300,400', rel:'stylesheet'}
+  %body{style: "background: #272935; display: flex; flex-direction: column; align-items: center; font-family: 'Montserrat', sans-serif; text-align: center;"}
+    = image_tag 'logo_light.png', style: 'height: 100px; margin: 50px 0;'
+    %div{style: 'background: #fff; width: 60vw; border-radius: 4px; padding: 40px; text-align: left; font-weight: 300;'}
+      = yield
+    %footer{style: 'margin: 50px; color: #fff; opacity: 0.3;'}
+      = image_tag "#{root_url}images/emails/icon.png", style: 'height: 40px'
+      %p
+        = t('mailers.application.find_us')
+      %div{style: 'display: flex; flex-direction: row; align-items: center; justify-content: center;'}
+        = link_to 'https://www.facebook.com/letsdevatig2i/' do
+          = image_tag "#{root_url}images/emails/facebook.png", style: 'height: 30px; margin: 0 10px;'
+        = link_to 'https://twitter.com/LetsDevAtIG2I' do
+          = image_tag "#{root_url}images/emails/twitter.png", style: 'height: 30px; margin: 0 10px;'
+      %p
+        = link_to URI.parse(root_url).host, root_url, style: 'color: #fff;'

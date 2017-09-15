@@ -3,8 +3,8 @@
     = link_to home_index_path do
       = image_tag('logo_light.svg')
   .right
-    = link_to 'Challenges', challenges_path, class: controller_name == 'challenges' ? 'active' : nil
+    = link_to t('activerecord.models.challenge.other'), challenges_path, class: controller_name == 'challenges' ? 'active' : nil
     - if user_signed_in?
-      = link_to 'Manager', manager_dashboard_index_path, class: 'login-button'
+      = link_to t('views.application.manager'), manager_dashboard_index_path, class: 'login-button'
     - else
-      = link_to 'Connexion', new_user_session_path, class: 'login-button'
+      = link_to t('views.signin.title'), new_user_session_path, class: 'login-button'

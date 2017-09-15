@@ -3,24 +3,25 @@
 .main-content
   = image_tag('logo_light.svg')
   %h3
-    Apprenez à développer en
-    %br
-    .home-language
-    en 3 étapes
+    = t('views.home.main_title_html')
 
   .steps
     .step
       .mdi.mdi-account-multiple-plus
-      Crée ton équipe
+      = t('views.home.steps.create_team')
     .step
       .mdi.mdi-code-braces
-      Participe aux challenges
+      = t('views.home.steps.participate')
     .step
       .mdi.mdi-trophy-variant
-      Gagne des prix
+      = t('views.home.steps.win')
 
   .engage
-    = link_to 'Commencer maintenant', new_user_registration_path
+    = link_to t('views.home.start_now'), user_signed_in? ? manager_dashboard_index_path : new_user_registration_path
+
+#languages
+  - @languages.each do |l|
+    %p= l.name
 
 = javascript_include_tag 'typed'
 = javascript_include_tag 'home'

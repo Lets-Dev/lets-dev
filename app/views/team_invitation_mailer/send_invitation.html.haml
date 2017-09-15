@@ -1,0 +1,6 @@
+%h1
+  = t('mailers.team_invitation.send_invitation.hello')
+%p
+  = t('mailers.team_invitation.send_invitation.body_html', team_name: @team_invitation.team.name)
+
+= render partial: 'shared/mailers/link_button', locals: {link: accept_team_user_membership_invitation_url(@team_invitation.id), text: t('mailers.team_invitation.send_invitation.button')}

@@ -2,18 +2,18 @@
   = image_tag('logo_light.svg')
   .panel
     .panel-header
-      %h2 Register
+      %h2
+        = t('views.signup.title')
     .panel-body
-      = devise_error_messages!
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         .field
-          = f.text_field :username, autofocus: true, placeholder: 'Username'
+          = f.text_field :username, autofocus: true, placeholder: t('activerecord.attributes.user.username')
         .field
-          = f.email_field :email, placeholder: 'Email address'
+          = f.email_field :email, placeholder: t('activerecord.attributes.user.email')
         .field
-          = f.password_field :password, autocomplete: "off", placeholder: 'Password'
+          = f.password_field :password, autocomplete: "off", placeholder: t('activerecord.attributes.user.password')
         .field
-          = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirmation'
+          = f.password_field :password_confirmation, autocomplete: "off", placeholder: t('activerecord.attributes.user.password_confirmation')
         .actions
-          = f.submit "Sign up"
+          = f.submit t('views.signup.button')
     = render "devise/shared/links"

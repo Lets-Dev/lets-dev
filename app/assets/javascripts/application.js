@@ -13,4 +13,7 @@
  *= require jquery
  *= require jquery_ujs
  *= require turbolinks
+ *= require toastr
  */
+toastr.options.progressBar = true;
+toastr.options.positionClass='toast-bottom-right';

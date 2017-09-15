@@ -1,10 +1,35 @@
 - content_for :navigation do
-  Challenges
+  = t('activerecord.models.challenge.other')
 - content_for :page_title do
   = "#{@challenge.title} - Let's Dev !"
 
 #challenge
   %h2
     = @challenge.title
+  - if current_user.current_team && current_user.is_admin_of?(current_user.current_team) && !current_user.current_team.challenges.include?(@challenge)
+    = form_for [:manager, TeamChallengeMembership.new] do |f|
+      = f.hidden_field :challenge_id, value: @challenge.id
+      = f.text_field :github_repository, placeholder: 'Repo Github (exemple: facebook/react)'
+      = f.submit 'Inscrire mon équipe'
   .subject
     = raw Markdown.new(@challenge.subject).to_html
+  #disqus_thread
+:javascript
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+  var disqus_config = function () {
+    this.page.identifier = "challenge_#{@challenge.id}";
+    this.page.title = "#{@challenge.title}";
+  };
+
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://lets-dev.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+%noscript
+  Please enable JavaScript to view the
+  %a{:href => "https://disqus.com/?ref_noscript"} comments powered by Disqus.

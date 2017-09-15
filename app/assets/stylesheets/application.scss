@@ -1,12 +1,19 @@
 @import 'bulma';
+@import 'toastr';
+@import 'colors';
 
 html {
+  background: #000 asset-url('background.png') no-repeat fixed center center;
   background-size: cover;
-  background: #000 url(background.png) no-repeat fixed center center;
 }
 
 body {
   font-family: Montserrat, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 @import 'mixins';
@@ -14,3 +21,4 @@ body {
 @import 'sessions';
 @import 'challenges';
 @import 'shared/challenge_card';
+

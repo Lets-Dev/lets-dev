@@ -8,8 +8,12 @@
 - Copy `.env.example` into `.env`
 - Run `bundle install`
 - Set database:
-    - Create user on your MySQL server
-    - `rake db:create`
+    - Create user `letsdev` on your PostgreSQL server
+        - On MacOS: `createuser letsdev -s`
+    - Create `development` and `test` databases
+        - On MacOS: 
+            - `createdb -Oletsdev -Eutf8 letsdev_development`
+            - `createdb -Oletsdev -Eutf8 letsdev_test`
     - `rake db:migrate`
     - `rake db:seed` if you want some fake datas
     

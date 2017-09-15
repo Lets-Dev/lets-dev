@@ -1,0 +1,40 @@
+- content_for :navigation do
+  #{t('views.manager.me.title')}
+- content_for :page_title do
+  #{t('views.manager.me.title')} - Let's Dev !
+#me
+  .columns
+    = render partial: 'shared/manager/me/side_navigation'
+    .column.container
+      .columns
+        .column.is-one-third
+          %h2
+            = t('views.manager.me.overview.my_account')
+          .columns
+            .column.is-one-quarter
+              = image_tag @current_user.avatar, class: 'profile-picture'
+            .column
+              %p
+                %b
+                  = @current_user.username
+              %p
+                = @current_user.email
+        .column
+          %h2
+            = t('views.manager.me.overview.my_invitations')
+          - if @pending_invitations.size > 0
+            .invitations
+              - @pending_invitations.each do |i|
+                .invitation
+                  .left
+                    = image_tag i.team.logo
+                    = i.team.name
+                  .right
+                    = link_to accept_team_user_membership_invitation_path(i.code), class: 'answer-button accept' do
+                      %i.mdi.mdi-check
+                    = link_to decline_team_user_membership_invitation_path(i.code), class: 'answer-button decline' do
+                      %i.mdi.mdi-close
+          - else
+            %p
+              %small
+                = t('views.manager.me.overview.no_invitations')

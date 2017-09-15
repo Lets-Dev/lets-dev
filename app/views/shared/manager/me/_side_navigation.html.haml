@@ -1,0 +1,16 @@
+.column.is-2.side-navigation
+  = link_to overview_manager_me_index_path, class: action_name == 'overview' ? 'active' : nil do
+    %i.mdi.mdi-account
+    = t('views.manager.me.side_navigation.overview')
+  = link_to edit_manager_me_index_path, class: action_name == 'edit' ? 'active' : nil do
+    %i.mdi.mdi-account-edit
+    = t('views.manager.me.side_navigation.edit')
+  = link_to security_manager_me_index_path, class: action_name == 'security' ? 'active' : nil do
+    %i.mdi.mdi-shield-half-full
+    = t('views.manager.me.side_navigation.security')
+  = link_to social_manager_me_index_path, class: action_name == 'social' ? 'active' : nil do
+    %i.mdi.mdi-account-card-details
+    = t('views.manager.me.side_navigation.social')
+  = link_to destroy_user_session_path, method: :delete, class: 'logout', 'data-confirm' => t('views.manager.me.side_navigation.logout.alert') do
+    %i.mdi.mdi-power
+    = t('views.manager.me.side_navigation.logout.label')

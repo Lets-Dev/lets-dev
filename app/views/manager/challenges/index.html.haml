@@ -1,13 +1,13 @@
 - content_for :navigation do
-  Challenges
+  = t('activerecord.models.challenge.other')
 - content_for :page_title do
-  Challenges - Let's Dev !
+  = "#{t('activerecord.models.challenge.other')} - Let's Dev !"
 
 #challenges.columns
   .column
     - if @current_challenges.size > 0
       %h2
-        Challenges en cours
+        = t('views.manager.challenges.current')
       - @current_challenges.in_groups_of(2, false).each do |challenges|
         .columns
           - challenges.each do |c|
@@ -15,7 +15,7 @@
               = render partial: 'shared/challenge_card', locals: {challenge: c}
     - if @ended_challenges.size > 0
       %h2
-        Challenges terminés
+        = t('views.manager.challenges.done')
       - @ended_challenges.in_groups_of(2, false).each do |challenges|
         .columns
           - challenges.each do |c|
@@ -23,4 +23,20 @@
               = render partial: 'shared/challenge_card', locals: {challenge: c}
   .column.is-third
     %h2
-      Classement général
+      = t('views.manager.challenges.rank')
+    .leaderboard
+      - @best_teams.each_with_index do |team, i|
+        .team
+          - if i == 0
+            .reward
+              = image_tag 'gold-badge.png'
+          - elsif i == 1
+            .reward
+              = image_tag 'silver-badge.png'
+          - elsif i == 2
+            .reward
+              = image_tag 'bronze-badge.png'
+          .name
+            = team['team_name']
+          .score
+            = team['rating']

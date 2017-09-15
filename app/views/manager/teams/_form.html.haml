@@ -1,0 +1,16 @@
+= form_for [:manager, @manager_team] do |f|
+  - if @manager_team.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@manager_team.errors.count, "error")} prohibited this manager_team from being saved:"
+      %ul
+        - @manager_team.errors.full_messages.each do |msg|
+          %li= msg
+
+  .team-creation
+    .container
+      .logo
+        = image_tag @manager_team.logo.url
+      = f.file_field :logo
+      = f.text_field :name, autofocus: true, placeholder: "Nom de l'équipe"
+      = f.text_area :description, placeholder: 'Description'
+      = f.submit 'Enregistrer', class: 'gradient-button'

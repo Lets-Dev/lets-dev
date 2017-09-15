@@ -1,6 +1,9 @@
 @import 'bulma';
+@import '../colors';
 @import 'navbar';
 @import 'sidebar';
+@import 'teams';
+@import '../toastr';
 
 html {
   font-family: Montserrat, sans-serif;
@@ -12,9 +15,140 @@ body {
   margin: 0;
 }
 
+h1 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 36px;
+  font-weight: 300;
+}
+
+h2 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 24px;
+  font-weight: 300;
+}
+
+h3 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+h4 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 20px;
+  font-weight: 300;
+}
+
+h5 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+h6 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  font-weight: 300;
+}
+
 .main-content {
   margin: 100px 0 0 240px;
   padding: 30px 40px;
 }
 
+form {
+  input[type=text], input[type=password], input[type=email], input[type=number], textarea {
+    font-family: Montserrat, sans-serif;
+    height: 50px;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 25px;
+    padding: 0 25px;
+    border: 1px solid #cecdcd;
+    font-weight: 300;
+    font-size: 18px;
+    outline: 0;
+  }
+
+  textarea {
+    padding: 14px 25px;
+    max-width: 100%;
+  }
+
+  .button-container {
+    text-align: center;
+  }
+
+  .gradient-button {
+    margin-top: 20px;
+    height: 50px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #FFC837 0%, #FF8008 100%);
+    box-shadow: 0 0 10px 0 rgba(255, 200, 55, 0.75);
+    border: none;
+    padding: 0 25px;
+    font-size: 24px;
+    font-weight: 300;
+    color: #fff;
+  }
+}
+
 @import 'challenges';
+@import 'dashboard';
+@import 'me';
+@import '../shared/team_card';
+.br-theme-bars-square .br-widget {
+  height: 15px;
+  white-space: nowrap;
+}
+.br-theme-bars-square .br-widget a {
+  display: block;
+  width: 30px;
+  height: 30px;
+  float: left;
+  border: 2px solid #bbcefb;
+  background-color: white;
+  margin: 2px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 2;
+  text-align: center;
+  color: #bbcefb;
+  font-weight: 600;
+}
+.br-theme-bars-square .br-widget a.br-active,
+.br-theme-bars-square .br-widget a.br-selected {
+  border: 2px solid #4278F5;
+  color: #4278F5;
+}
+.br-theme-bars-square .br-widget .br-current-rating {
+  clear: both;
+  width: 330px;
+  text-align: center;
+  font-weight: 600;
+  display: block;
+  padding: .5em 0;
+  color: #646464;
+}
+.br-theme-bars-square .br-readonly a {
+  cursor: default;
+}
+.br-theme-bars-square .br-readonly a.br-active,
+.br-theme-bars-square .br-readonly a.br-selected {
+  border: 2px solid #729bf8;
+  color: #729bf8;
+}
+@media print {
+  .br-theme-bars-square .br-widget a {
+    border: 2px solid #b3b3b3;
+    color: #b3b3b3;
+  }
+  .br-theme-bars-square .br-widget a.br-active,
+  .br-theme-bars-square .br-widget a.br-selected {
+    border: 2px solid black;
+    color: black;
+  }
+}
+
+@import 'shared/challenge_card';

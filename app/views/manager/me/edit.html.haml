@@ -1,1 +1,39 @@
-= @user.email
+- content_for :navigation do
+  = t('views.manager.me.title')
+- content_for :page_title do
+  #{t('views.manager.me.title')} - Let's Dev !
+#me
+  .columns
+    = render partial: 'shared/manager/me/side_navigation'
+    .column.container
+      %h2
+        = t('views.manager.me.edit.update_informations')
+      = form_for @user, url: {action: :update} do |f|
+        .columns
+          .column
+            = f.text_field     :username,               placeholder: t('activerecord.attributes.user.username'),            autocomplete: :off, value: @user.username
+          .column
+            = f.text_field     :email,                  placeholder: t('activerecord.attributes.user.email'),       autocomplete: :off, value: @user.email
+          .column
+            %button.gradient-button{type: :submit}
+              = t('views.application.update')
+      %h2
+        = t('views.manager.me.edit.update_avatar')
+      = form_for @user, url: {action: :update_avatar} do |f|
+        .columns
+          .column.is-one-third
+            = f.file_field :avatar, as: :file
+          .column
+            %button.gradient-button{type: :submit}
+              = t('views.application.update')
+      %h2
+        = t('views.manager.me.edit.update_locale')
+      = form_for @user, url: {action: :update_locale} do |f|
+        .columns
+          .column.is-one-third
+            %p.control
+              %span.select
+                = f.select :locale, options_for_select([['Français', :fr], ['English', :en]], I18n.locale)
+          .column
+            %button.gradient-button{type: :submit}
+              = t('views.application.update')

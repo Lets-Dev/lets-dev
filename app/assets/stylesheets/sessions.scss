@@ -6,6 +6,10 @@
   align-items: center;
   justify-content: center;
 
+  > img {
+    margin: 50px 0;
+  }
+
   .panel {
     .panel-header {
       border-top-left-radius: 4px;
@@ -13,6 +17,8 @@
       background-image: linear-gradient(79deg, #ffc837, #ff8008);
       height: 75px;
       line-height: 75px;
+      padding: 0 40px;
+
       h2 {
         font-size: 36px;
         font-weight: 300;
@@ -35,12 +41,12 @@
         input[type=email], input[type=password], input[type=text] {
           height: 50px;
           border-radius: 25px;
-          width: calc(100% - 50px);
+          width: 100%;
           border: solid 2px #cecdcd;
           padding: 0 25px;
           font-size: 24px;
           font-weight: 300;
-          margin-bottom: 50px;
+          margin-bottom: 30px;
           outline: none;
 
           @include placeholder {
@@ -62,13 +68,91 @@
           background-image: linear-gradient(81deg, #ffc837, #ff8008);
           box-shadow: 0 0 20px 0 #cd7725;
           padding: 0 40px;
-          margin: 40px 0;
+          margin-bottom: 40px;
           transition: all 0.3s ease;
 
           &:hover {
             box-shadow: 0 0 30px 0 #cd7725;
           }
         }
+
+        a {
+          margin: -20px 0 20px;
+          color: #CECDCD;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .omniauth-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: -37.5px;
+
+    .omniauth-button {
+      height: 75px;
+      width: 75px;
+      border-radius: 37.5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 36px;
+      transition: all 0.3s ease;
+
+      &.facebook {
+        background-color: #3B5998;
+        box-shadow: 0 0 10px 0 rgba(59, 89, 152, 0.5);
+
+        &:hover {
+          box-shadow: 0 0 20px 0 rgba(59, 89, 152, 0.7);
+        }
+      }
+
+      &.google_oauth2 {
+        background-color: #D62D20;
+        box-shadow: 0 0 10px 0 rgba(214, 45, 32, 0.5);
+
+        &:hover {
+          box-shadow: 0 0 20px 0 rgba(214, 45, 32, 0.7);
+        }
+      }
+
+      &.github {
+        background-color: #171515;
+        box-shadow: 0 0 10px 0 rgba(23, 21, 21, 0.5);
+
+        &:hover {
+          box-shadow: 0 0 20px 0 rgba(23, 21, 21, 0.7);
+        }
+      }
+    }
+  }
+
+  .devise-links {
+    text-align: center;
+
+    a {
+      display: inline-block;
+      color: #fff;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:first-child {
+        margin-top: 20px;
+      }
+
+      &:last-child {
+        margin-bottom: 20px;
       }
     }
   }

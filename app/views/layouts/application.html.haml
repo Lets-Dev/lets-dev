@@ -1,13 +1,31 @@
 !!!
 %html
   %head
-    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
-    %title LetsDev
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}
+    %title
+      - if content_for?(:page_title)
+        = yield :page_title
+      - else
+        Let's Dev !
     = csrf_meta_tags
+    %link{rel: 'shortcut icon', href: "#{root_url}/favicon.png"}
     %link{rel: 'stylesheet', href: '//cdn.materialdesignicons.com/1.9.32/css/materialdesignicons.min.css'}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    - if content_for?(:meta_og)
+      = yield :meta_og
+    - else
+      %meta{property: 'og:title', content: "Let's Dev !"}
+      %meta{property: 'og:description', content: 'Crée ton équipe dès maintenant et apprends à développer !'}
+      %meta{property: 'og:type', content: 'website'}
+      %meta{property: 'og:url', content: root_url}
+    %meta{property: 'og:image', content: "#{root_url}images/open_graph/lets-dev.png"}
+    %meta{property: 'og:image:width', content: '1200'}
+    %meta{property: 'og:image:height', content: '1200'}
+    %meta{property: 'og:locale', content: I18n.locale}
+    %meta{property: 'og:locale:alternate', content: 'en'}
   %body
-
     = yield
 
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+    = custom_bootstrap_flash

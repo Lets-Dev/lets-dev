@@ -1,23 +1,150 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  views:
+    application:
+      manager: "Manager"
+      update: "Update"
+      open_graph:
+        motto: "Create your team and learn to develop right now !"
+
+    home:
+      main_title_html: "Learn <div class='home-language'></div> in 3 steps"
+      steps:
+        create_team: "Create your team"
+        participate: "Enroll to challenges"
+        win: "Win !"
+      start_now: "Start now"
+
+    signin:
+      title: "Sign in"
+      button: "Sign in"
+      signup: "Not registered yet ?"
+      forgot_password: "Forgot your password ?"
+
+    signup:
+      title: "Sign up"
+      button: "Sign up"
+      signin: "Already registered ?"
+
+    passwords:
+      new:
+        title: "Forgot your password ?"
+        button: "Send instructions"
+      edit:
+        title: "Forgot your password"
+        button: "Change my password"
+
+    manager:
+      dashboard: "Dashboard"
+      challenges:
+        current: "Current challenges"
+        done: "Previous challenges"
+        rank: "Global ranking"
+
+      me:
+        title: "My informations"
+        side_navigation:
+          overview: "Overview"
+          edit: "Edit"
+          security: "Security"
+          social: "Associated accounts"
+          logout:
+            label: "Logout"
+            alert: "Are you sure you want to logout ?"
+
+        edit:
+          update_informations: "Update my informations"
+          update_avatar: "Update my avatar"
+          update_locale: "Update my language"
+
+        overview:
+          my_account: "My account"
+          my_invitations: "My invitations"
+          no_invitations: "No invitation yet"
+
+        security:
+          update_password: "Update my password"
+          current_password: "Current password"
+          new_password: "New password"
+          confirmation: "Confirmation"
+
+        social:
+          associated_accounts: "Associated accounts"
+          connect: "Connect"
+
+  controllers:
+    team_user_membership_invitations:
+      doesnt_exist: "This invitation doesn't exist"
+      expired: "This invitation is expired"
+      accepted: "You joined %{team_name}"
+      declined: "You declined the invitation to %{team_name}"
+      wrong_user: "This invitation is not for the logged user"
+
+    manager:
+      me:
+        user_updated: "Informations updated"
+        avatar_updated: "Avatar updated"
+        locale_updated: "Language updated"
+        password_updated: "Password updated"
+        provider_removed: "%{provider} has been removed from your account"
+
+  partials:
+    challenge_card:
+      view_subject: "View subject"
+      jury:
+        request: "Request jury membership"
+        pending: "Request pending"
+        accepted: "Request accepted"
+        declined: "Request declined"
+        rate: "Rate this challenge"
+        rated: "Rating done"
+
+  mailers:
+    application:
+      find_us: "Find us on:"
+    team_invitation:
+      send_invitation:
+        subject: "[Let's Dev !] Your invitation to %{team_name}"
+        hello: "Hi,"
+        body_html: "You have been invited to join the team <b style: 'font-weight: 400;'>%{team_name}</b> in order to develop projects for Let's Dev ! To join it, you just need to click on the button below."
+        button: "Join the team"
+
+  activerecord:
+    attributes:
+      team:
+        name: "Name"
+
+      user:
+        username: "Username"
+        email: "Email address"
+        password: "Password"
+        password_confirmation: "Confirmation"
+        remember_me: "Remember me"
+
+    models:
+      challenge:
+        one: "Challenge"
+        other: "Challenges"
+      contact:
+        one: "Contact"
+        other: "Contacts"
+      desk:
+        one: "Desk"
+        other: "Desks"
+      financial_movement:
+        one: "Financial movement"
+        other: "Financial movements"
+      language:
+        one: "Language"
+        other: "Languages"
+      language_set:
+        one: "Languages set"
+        other: "Languages sets"
+      subscription:
+        one: "Subscription"
+        other: "Subscriptions"
+      team:
+        one: "Team"
+        other: "Teams"
+      user:
+        one: "User"
+        other: "Users"

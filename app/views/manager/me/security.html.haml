@@ -1,0 +1,22 @@
+- content_for :navigation do
+  #{t('views.manager.me.title')}
+- content_for :page_title do
+  #{t('views.manager.me.title')} - Let's Dev !
+#me
+  .columns
+    = render partial: 'shared/manager/me/side_navigation'
+    .column.container
+      %h2
+        = t('views.manager.me.security.update_password')
+      = form_for @user, url: {action: :update_password} do |f|
+        .columns
+          .column
+            = f.password_field :current_password,       placeholder: t('views.manager.me.security.current_password'),    autocomplete: :off
+          .column
+            = f.password_field :password,               placeholder: t('views.manager.me.security.new_password'),        autocomplete: :off
+          .column
+            = f.password_field :password_confirmation,  placeholder: t('views.manager.me.security.confirmation'),        autocomplete: :off
+        .columns
+          .column.is-offset-8.has-text-right
+            %button.gradient-button{type: :submit}
+              = t('views.application.update')

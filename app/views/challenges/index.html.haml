@@ -1,3 +1,9 @@
+- content_for :meta_og do
+  %meta{property: 'og:title', content: "#{t('activerecord.models.challenge.other')} - Let's Dev !"}
+  %meta{property: 'og:description', content: t('views.application.open_graph.motto')}
+  %meta{property: 'og:type', content: 'website'}
+  %meta{property: 'og:url', content: challenges_url}
+
 = render partial: 'shared/header'
 
 #challenges

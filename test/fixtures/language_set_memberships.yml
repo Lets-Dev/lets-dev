@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  language_id: one
-  language_set_id: one
-
-two:
-  language_id: two
-  language_set_id: two

@@ -10,36 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508104405) do
+ActiveRecord::Schema.define(version: 20170722133907) do
 
-  create_table "challenges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "challenge_rating_criteria", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.uuid     "challenge_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["challenge_id"], name: "index_challenge_rating_criteria_on_challenge_id", using: :btree
+  end
+
+  create_table "challenges", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "title"
-    t.text     "subject",         limit: 65535
+    t.text     "subject"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.integer  "language_set_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.uuid     "language_set_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["language_set_id"], name: "index_challenges_on_language_set_id", using: :btree
   end
 
-  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "contacts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "desk_user_memberships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "desk_id"
-    t.integer  "user_id"
+  create_table "desk_user_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "desk_id"
+    t.uuid     "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["desk_id"], name: "index_desk_user_memberships_on_desk_id", using: :btree
     t.index ["user_id"], name: "index_desk_user_memberships_on_user_id", using: :btree
   end
 
-  create_table "desks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "desks", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.datetime "started_at"
     t.datetime "ended_at"
     t.boolean  "current"
@@ -47,85 +60,157 @@ ActiveRecord::Schema.define(version: 20170508104405) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "financial_movements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.float    "amount",      limit: 24
-    t.text     "description", limit: 65535
-    t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "financial_movements", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.float    "amount"
+    t.text     "description"
+    t.uuid     "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_financial_movements_on_user_id", using: :btree
   end
 
-  create_table "jury_challenge_memberships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "challenge_id"
+  create_table "jury_challenge_membership_invitations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "challenge_id"
+    t.string   "user_email"
+    t.integer  "status",       default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["challenge_id"], name: "index_jury_challenge_membership_invitations_on_challenge_id", using: :btree
+  end
+
+  create_table "jury_challenge_membership_requests", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "challenge_id"
+    t.uuid     "user_id"
+    t.integer  "status",       default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["challenge_id"], name: "index_jury_challenge_membership_requests_on_challenge_id", using: :btree
+    t.index ["user_id"], name: "index_jury_challenge_membership_requests_on_user_id", using: :btree
+  end
+
+  create_table "jury_challenge_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "user_id"
+    t.uuid     "challenge_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["challenge_id"], name: "index_jury_challenge_memberships_on_challenge_id", using: :btree
     t.index ["user_id"], name: "index_jury_challenge_memberships_on_user_id", using: :btree
   end
 
-  create_table "language_set_memberships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "language_id"
-    t.integer  "language_set_id"
+  create_table "jury_challenge_rates", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.integer  "rating"
+    t.text     "informations"
+    t.uuid     "jury_challenge_membership_id"
+    t.uuid     "challenge_rating_criterium_id"
+    t.uuid     "team_challenge_membership_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["challenge_rating_criterium_id"], name: "index_jury_challenge_rates_on_challenge_rating_criterium_id", using: :btree
+    t.index ["jury_challenge_membership_id"], name: "index_jury_challenge_rates_on_jury_challenge_membership_id", using: :btree
+    t.index ["team_challenge_membership_id"], name: "index_jury_challenge_rates_on_team_challenge_membership_id", using: :btree
+  end
+
+  create_table "language_set_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "language_id"
+    t.uuid     "language_set_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["language_id"], name: "index_language_set_memberships_on_language_id", using: :btree
     t.index ["language_set_id"], name: "index_language_set_memberships_on_language_set_id", using: :btree
   end
 
-  create_table "language_sets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "language_sets", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "languages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "languages", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
-    t.text     "description",       limit: 65535
+    t.text     "description"
     t.string   "documentation_url"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
-  create_table "subscriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "financial_movement_id"
-    t.integer  "user_id"
+  create_table "subscriptions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "financial_movement_id"
+    t.uuid     "user_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["financial_movement_id"], name: "index_subscriptions_on_financial_movement_id", using: :btree
     t.index ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
   end
 
-  create_table "team_challenge_memberships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "team_id"
-    t.integer  "challenge_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table "team_challenge_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "team_id"
+    t.uuid     "challenge_id"
+    t.string   "github_repository"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.index ["challenge_id"], name: "index_team_challenge_memberships_on_challenge_id", using: :btree
     t.index ["team_id"], name: "index_team_challenge_memberships_on_team_id", using: :btree
   end
 
-  create_table "teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "team_user_membership_invitations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "team_id"
+    t.string   "user_email"
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["team_id"], name: "index_team_user_membership_invitations_on_team_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "team_user_membership_requests", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "team_id"
+    t.uuid     "user_id"
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["team_id"], name: "index_team_user_membership_requests_on_team_id", using: :btree
+    t.index ["user_id"], name: "index_team_user_membership_requests_on_user_id", using: :btree
+  end
+
+  create_table "team_user_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "team_id"
+    t.uuid     "user_id"
+    t.integer  "role"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_team_user_memberships_on_team_id", using: :btree
+    t.index ["user_id"], name: "index_team_user_memberships_on_user_id", using: :btree
+  end
+
+  create_table "teams", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "users", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "username"
-    t.string   "image"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "locale",                 default: "fr", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -144,21 +229,11 @@ ActiveRecord::Schema.define(version: 20170508104405) do
     t.string   "google_oauth2_id"
     t.string   "google_oauth2_name"
     t.string   "google_oauth2_image"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "desk_user_memberships", "desks"
-  add_foreign_key "desk_user_memberships", "users"
-  add_foreign_key "jury_challenge_memberships", "challenges"
-  add_foreign_key "jury_challenge_memberships", "users"
-  add_foreign_key "language_set_memberships", "language_sets"
-  add_foreign_key "language_set_memberships", "languages"
-  add_foreign_key "subscriptions", "financial_movements"
-  add_foreign_key "subscriptions", "users"
-  add_foreign_key "team_challenge_memberships", "challenges"
-  add_foreign_key "team_challenge_memberships", "teams"
 end

@@ -1,0 +1,21 @@
+language: ruby
+rvm:
+- 2.4.1
+bundler_args: "--jobs=2"
+cache: bundler
+services:
+- postgresql
+before_script:
+- cp config/database.travis.yml config/database.yml
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- psql -c 'create database letsdev_test' -U postgres
+script:
+- bundle exec rake db:environment:set RAILS_ENV=test
+- bundle exec rake db:reset RAILS_ENV=test
+- bundle exec rspec
+- bundle exec codeclimate-test-reporter
+notifications:
+  slack:
+    secure: g82XK1AICWMTxKnu9u6DzfQFIBsgmOS2Gxg4st/JrzcZjls5iP8Pb4kqTo2JxPc3KBtEBG9DsqP5/lxR01yaYRaeHBbIYOGtpbQNPqmGmybrcOp/Ii9nyFTAtPTxek6LS1gtT0+D62x050tGqFKRAp1EwmWWzCZfr1fxeQ34hXjIlVmX6cbzQZDsHe6boMD8dcduN2+tPdJ1XxobNogc482uDyvczMUvVnGuIk92TyigTU1wEgzgboHSEpPGBxSJyB/2yBB0uA/M+GZeKn736ej5p3t0vvSU8NaPTrdZjuOe79xhDhL899o5oimaotjLodlaWPE0Gd2bqKYZsg5GZ0qdam+oFzIwGw70QNn11k3a/oTI4DONoINL1i9BuUZpqwi+Zu5/7wxg3oWayg/O9I4H1NYGYrFxPy46tV6U+jfAvYkCHweojjg9OKv97HL0JfSEJxc09kzfEkG9TIoYa1oUnTql3oLAECwy00nLzNlTpv+nBB/loEmiEFotyLFAup3gjjUOsS3NO/QtuZWrDBvQ/akr6TN9e+hs5KobBNkE2JUkNm16vXF1HBIjFwZPFC5SdzY/+Cl+J/tL43feeMZBT2vfrG8fpX+h85vwMQstWU1XjlmRQX8OJUb3dv02qSroP3IjReQWOCUF6gLRkR1C9AP7pDEyGAN6ubACdXI=

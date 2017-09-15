@@ -13,7 +13,7 @@ class Language < ApplicationRecord
                         thumb: '100x100#'
                     },
                     url: '/uploads/:class/:attachment/:name/:style.:extension',
-                    default_url: '/images/:style/missing.png'
+                    default_url: '/images/missing/:class.png'
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
   before_post_process :rename_file
 

@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  desk_id: one
-  user_id: one
-
-two:
-  desk_id: two
-  user_id: two

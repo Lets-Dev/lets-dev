@@ -3,9 +3,9 @@
 
   %ul
     %li{class: controller_name == 'dashboard' ? 'active' : nil}
-      = link_to 'Dashboard', manager_dashboard_index_path
+      = link_to t('views.manager.dashboard'), manager_dashboard_index_path
     %li{class: controller_name == 'challenges' ? 'active' : nil}
-      = link_to 'Challenges', manager_challenges_path
+      = link_to t('activerecord.models.challenge.other'), manager_challenges_path
     %li{class: controller_name == 'teams' ? 'active' : nil}
-      = link_to 'Teams', manager_teams_path
+      = link_to t('activerecord.models.team.other'), manager_teams_path
   %hr
