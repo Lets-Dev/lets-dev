@@ -3,6 +3,8 @@ class JuryChallengeMembershipRequest < ApplicationRecord
   belongs_to :user, optional: false
   enum status: [:pending, :accepted, :declined]
 
+  scope :pending, -> () { where(status: :pending) }
+
   validates :user_id, uniqueness: {scope: :challenge_id, message: 'une demande par challenge par utilisateur'}, presence: true
   validate :absence_of_membership
 

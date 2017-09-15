@@ -1,7 +1,7 @@
 {
   "name": "lets-dev",
   "scripts": {
-    "postdeploy": "bundle exec rake db:migrate | bundle exec rake db:seed"
+    "postdeploy": "bundle exec rake db:migrate db:seed"
   },
   "env": {
     "LANG": {

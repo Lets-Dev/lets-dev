@@ -16,8 +16,12 @@ ActiveAdmin.register_page 'Dashboard' do
       end
 
       column do
-        panel 'Info' do
-          para 'Welcome to ActiveAdmin.'
+        panel 'Jury Challenge Membership Requests' do
+          ul do
+            JuryChallengeMembershipRequest.pending.map do |c|
+              li link_to("#{c.challenge.title}: #{c.user.username}", admin_jury_challenge_membership_request_path(c))
+            end
+          end
         end
       end
     end

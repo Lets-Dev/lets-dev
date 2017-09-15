@@ -16,12 +16,13 @@ class TeamChallengeMembership < ApplicationRecord
   end
 
   def existence_of_github_repo
-    return if self.github_repository.nil?
-    repo = self.github_repository.split('/')
-    begin 
-      Github.repos.get user: repo.first, repo: repo.last
-    rescue
-      errors.add(:github_repository, :must_exist)
+    if !self.github_repository.nil? && self.github_repository.length > 0 && Rails.env != 'test'
+      repo = self.github_repository.split('/')
+      begin 
+        Github.repos.get user: repo.first, repo: repo.last
+      rescue
+        errors.add(:github_repository, :must_exist)
+      end
     end
   end
 end
