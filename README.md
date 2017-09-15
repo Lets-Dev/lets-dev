@@ -1,6 +1,6 @@
 # Let's Dev !
 
-[![Code Climate](https://img.shields.io/codeclimate/github/Lets-Dev/lets-dev.svg)]() [![Travis](https://img.shields.io/travis/Lets-Dev/lets-dev.svg)]()
+[![Code Climate](https://img.shields.io/codeclimate/github/Lets-Dev/lets-dev.svg)](https://codeclimate.com/github/Lets-Dev/lets-dev) [![Travis](https://img.shields.io/travis/Lets-Dev/lets-dev.svg)](https://travis-ci.org/Lets-Dev/lets-dev)
 
 ## Getting started
 
