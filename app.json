@@ -4,6 +4,15 @@
     "postdeploy": "bundle exec rake db:migrate db:seed"
   },
   "env": {
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_ACCESS_KEY_SECRET": {
+      "required": true
+    },
+    "AWS_REGION": {
+      "required": true
+    },
     "LANG": {
       "required": true
     },
@@ -47,6 +56,12 @@
       "required": true
     },
     "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "S3_BUCKET_NAME": {
+      "required": true
+    },
+    "S3_ENDPOINT": {
       "required": true
     },
     "SECRET_KEY_BASE": {
