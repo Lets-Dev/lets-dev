@@ -26,7 +26,7 @@ class User < ApplicationRecord
                         medium: '300x300#',
                         thumb: '100x100#'
                     },
-                    url: '/uploads/:class/:attachment/:username/:style.:extension',
+                    path: '/:class/:attachment/:username/:style.:extension',
                     default_url: '/images/missing/:class.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   before_post_process :rename_file
