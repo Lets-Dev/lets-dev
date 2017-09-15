@@ -1,5 +1,7 @@
 # Let's Dev !
 
+[![Code Climate](https://img.shields.io/codeclimate/github/Lets-Dev/lets-dev.svg)]() [![Travis](https://img.shields.io/travis/Lets-Dev/lets-dev.svg)]()
+
 ## Getting started
 
 - Install [MailDev](http://danfarrelly.nyc/MailDev/) in development
