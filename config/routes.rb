@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     root to: 'dashboard#index'
   end
 
+  get '/privacy', to: 'pages#privacy'
   resources :home, only: :index
   resources :challenges, only: [:index, :show]
   resources :jury_challenge_membership_invitations, only: [] do
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
     get :accept, on: :member
     get :decline, on: :member
   end
+
 
   root to: 'home#index'
 end
