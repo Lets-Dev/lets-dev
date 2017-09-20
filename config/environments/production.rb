@@ -64,10 +64,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       address: ENV['LETS_DEV_SMTP_ADDRESS'],
       port:  ENV['LETS_DEV_SMTP_PORT'],
-      domain: 'lets-dev.fr',
       user_name: ENV['LETS_DEV_SMTP_USERNAME'],
       password:  ENV['LETS_DEV_SMTP_PASSWORD'],
-      authentication: 'plain',
+      authentication: :login,
+      ssl: true,
+      tls: true,
       enable_starttls_auto: true
   }
 
