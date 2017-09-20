@@ -12,10 +12,11 @@
         - teams.each do |t|
           .column
             = render partial: 'shared/team_card', locals: {team: t}
-  .column.is-3
-    %h2
-      Mon équipe
-    = render partial: 'shared/team_card', locals: {team: current_user.current_team}
+  - unless current_user.current_team.nil?
+    .column.is-3
+      %h2
+        Mon équipe
+      = render partial: 'shared/team_card', locals: {team: current_user.current_team}
 
 - unless current_user.has_team?
   = link_to 'New Team', new_manager_team_path
