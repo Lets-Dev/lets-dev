@@ -3,7 +3,7 @@
   %h3
     = link_to team.name, manager_team_path(team)
   %p
-    - if team.description.nil || team.description.length <= 0
+    - if team.description.nil? || team.description.length <= 0
       Aucune description
     - else  
       = team.description
