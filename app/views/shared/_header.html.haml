@@ -1,7 +1,7 @@
 %header
   - unless controller_name == 'home'
     = link_to home_index_path do
-      = image_tag('logo_light.svg')
+      = image_tag('logo_light.png')
   .right
     = link_to t('activerecord.models.challenge.other'), challenges_path, class: controller_name == 'challenges' ? 'active' : nil
     - if user_signed_in?

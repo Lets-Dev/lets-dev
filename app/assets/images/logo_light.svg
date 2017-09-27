@@ -16,6 +16,9 @@
         <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="147" height="75" fill="white">
             <use xlink:href="#path-3"></use>
         </mask>
+        <style type="text/css">
+            @import url('https://fonts.googleapis.com/css?family=Audiowide');
+        </style>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Landing" transform="translate(-561.000000, -247.000000)">
