@@ -1,6 +1,6 @@
 # Let's Dev !
 
-[![Code Climate](https://img.shields.io/codeclimate/github/Lets-Dev/lets-dev.svg)](https://codeclimate.com/github/Lets-Dev/lets-dev) [![Travis](https://img.shields.io/travis/Lets-Dev/lets-dev.svg)](https://travis-ci.org/Lets-Dev/lets-dev)
+[![Maintainability](https://api.codeclimate.com/v1/badges/89d2c7e31c02cdce0df8/maintainability)](https://codeclimate.com/github/Lets-Dev/lets-dev/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/89d2c7e31c02cdce0df8/test_coverage)](https://codeclimate.com/github/Lets-Dev/lets-dev/test_coverage) [![Travis](https://img.shields.io/travis/Lets-Dev/lets-dev.svg)](https://travis-ci.org/Lets-Dev/lets-dev)
 
 ## Getting started
 
