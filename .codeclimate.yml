@@ -1,26 +1,31 @@
-engines:
-  rubocop:
-    enabled: true
+version: "2"
+plugins:
   brakeman:
-    enabled: true
-  eslint:
     enabled: true
   csslint:
     enabled: true
+    exclude_patterns:
+    - coverage/
   duplication:
-    enabled: true
+    enabled: false
     config:
       languages:
       - ruby
       - javascript
-ratings:
-  paths:
-  - app/**
-  - lib/**
-  - "**.rb"
-  - "**.go"
-exclude_paths:
-- config/**/*
-- db/**/*
-- spec/**/*
-- vendor/**/*
+    exclude_patterns:
+    - config/
+    - db/
+    - spec/
+  eslint:
+    enabled: true
+    exclude_patterns:
+    - coverage/
+  rubocop:
+    enabled: true
+    exclude_patterns:
+    - bin/
+    - config/
+    - db/
+    - spec/
+  structure:
+    enabled: false
