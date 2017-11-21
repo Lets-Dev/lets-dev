@@ -1,12 +1,6 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/sofianegargouri/Development/LetsDev/app/models/challenge_rating_criterium.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/contact.rb": [
         1,
         1,
@@ -100,17 +94,17 @@
         1,
         1,
         null,
-        50,
+        55,
         18,
         13,
         null,
         1,
         1,
-        41,
+        45,
         null,
         null,
         1,
-        41,
+        45,
         null,
         null
       ],
@@ -173,6 +167,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0
+      ],
+      "/Users/sofianegargouri/Development/LetsDev/app/admin/challenge_rating_criterium.rb": [
         0,
         0,
         0
@@ -794,6 +793,12 @@
         0,
         0
       ],
+      "/Users/sofianegargouri/Development/LetsDev/app/controllers/pages_controller.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
       "/Users/sofianegargouri/Development/LetsDev/app/controllers/team_user_membership_invitations_controller.rb": [
         0,
         0,
@@ -1047,6 +1052,12 @@
         0,
         0
       ],
+      "/Users/sofianegargouri/Development/LetsDev/app/models/challenge_rating_criterium.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/desk.rb": [
         0,
         0,
@@ -1208,6 +1219,15 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/Users/sofianegargouri/Development/LetsDev/app/models/user.rb": [
@@ -1308,6 +1328,6 @@
         0
       ]
     },
-    "timestamp": 1504811043
+    "timestamp": 1511288794
   }
 }

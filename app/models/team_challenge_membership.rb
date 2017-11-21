@@ -17,6 +17,9 @@ class TeamChallengeMembership < ApplicationRecord
 
   def existence_of_github_repo
     if !self.github_repository.nil? && self.github_repository.length > 0 && Rails.env != 'test'
+      
+      self.format_github_repo
+
       repo = self.github_repository.split('/')
       begin 
         Github.repos.get user: repo.first, repo: repo.last
@@ -24,5 +27,11 @@ class TeamChallengeMembership < ApplicationRecord
         errors.add(:github_repository, :must_exist)
       end
     end
+  end
+
+  def format_github_repo
+    self.github_repository.slice!('https://github.com/') if self.github_repository.include?('https://github.com/')
+    self.github_repository.slice!('git@github.com:') if self.github_repository.include?('git@github.com:')
+    self.github_repository.slice!('.git') if self.github_repository.include?('.git')
   end
 end
