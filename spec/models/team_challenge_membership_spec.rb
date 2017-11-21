@@ -19,12 +19,33 @@ describe TeamChallengeMembership do
       it :challenge do
         expect(FactoryGirl.build(:team_challenge_membership, challenge: nil)).not_to be_valid
       end
+
+      it :github_repository do
+        expect(FactoryGirl.build(:team_challenge_membership, github_repository: nil)).not_to be_valid
+      end
     end
 
     describe :uniqueness_of do
       it :membership_per_challenge_per_team do
         m = FactoryGirl.create(:team_challenge_membership, team: @t.team)
         expect(FactoryGirl.build(:team_challenge_membership, team: m.team, challenge: m.challenge)).not_to be_valid
+      end
+    end
+  end
+
+  context :modifiers do
+    it :formats_github_repository do
+      github_links = %w(
+        lets-dev/lets-dev
+        https://github.com/lets-dev/lets-dev
+        https://github.com/lets-dev/lets-dev.git
+        git@github.com:lets-dev/lets-dev.git
+      )
+
+      github_links.each do |link|
+        tcm = FactoryGirl.build(:team_challenge_membership, github_repository: link)
+        tcm.send(:format_github_repo)
+        expect(tcm.github_repository).to eq('lets-dev/lets-dev')
       end
     end
   end
