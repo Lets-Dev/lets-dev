@@ -13,6 +13,9 @@ engines:
       languages:
       - ruby
       - javascript
+    exclude_paths:
+    - spec/
+    - db/
 ratings:
   paths:
   - app/**
@@ -20,5 +23,6 @@ ratings:
   - "**.rb"
   - "**.go"
 exclude_paths:
-- spec/**/*
-- "**/vendor/**/*"
+- config/
+- db/
+- vendor/
