@@ -8,7 +8,7 @@ class Manager::ChallengesController < Manager::BaseController
       LEFT JOIN team_challenge_memberships ON team_challenge_membership_id = team_challenge_memberships.id
       LEFT JOIN teams ON team_id = teams.id
       GROUP BY team_challenge_membership_id, teams.id
-      ORDER BY rating')
+      ORDER BY rating DESC')
   end
 
   def show

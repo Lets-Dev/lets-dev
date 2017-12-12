@@ -32,7 +32,6 @@ $(document).ready(function() {
             criteria = criteria.map(function(c) {
               return c.challenge_rating_criterium_id == r.challenge_rating_criterium_id && c.team_challenge_membership_id == r.team_challenge_membership_id ? r : c
             })
-            console.log(criteria)
             if (criteria.filter(function(e) { return e.rating == null }).length <= 0)
               $('#rating-button-container').html("<a href='/manager/challenges'>Terminer l'évaluation</a>")
           }

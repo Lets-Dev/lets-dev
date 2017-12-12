@@ -19,10 +19,15 @@ class Manager::JuryChallengeRatesController < Manager::BaseController
     # Use callbacks to share common setup or constraints between actions.
     def set_manager_jury_challenge_rate
       criterium = ChallengeRatingCriterium.find(manager_jury_challenge_rate_params[:challenge_rating_criterium_id])
-      render nothing: true, status: :not_found and return if criterium.nil?
+      team_membership = TeamChallengeMembership.find(manager_jury_challenge_rate_params[:team_challenge_membership_id])
+      render nothing: true, status: :not_found and return if criterium.nil? || team_membership.nil?
       membership = JuryChallengeMembership.find_by(user: current_user, challenge: criterium.challenge)
       render nothing: true, status: :unauthorized and return if membership.nil?
-      @manager_jury_challenge_rate = JuryChallengeRate.where(challenge_rating_criterium: criterium, jury_challenge_membership: membership).first_or_create
+      @manager_jury_challenge_rate = JuryChallengeRate.where(
+        challenge_rating_criterium: criterium,
+        jury_challenge_membership: membership,
+        team_challenge_membership: team_membership
+        ).first_or_create
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
